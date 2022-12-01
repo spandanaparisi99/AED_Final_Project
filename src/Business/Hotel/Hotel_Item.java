@@ -9,5 +9,5 @@ package Business.Hotel;
  * @author Swapnil
  */
 public class Hotel_Item {
-    
+    int item_id;
 }
