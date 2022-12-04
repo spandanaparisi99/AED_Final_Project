@@ -1,20 +1,111 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
 package userinterface.DeliveryManRole;
+
+import Business.DeliveryMan.DeliveryMan;
+import Business.EcoSystem;
+import Business.Orders.GroceryOrder;
+import Business.Orders.GroceryOrderDirectory;
+import Business.Orders.HotelOrder;
+import Business.Orders.HotelOrderDirectory;
+
+import Business.UserAccount.UserAccount;
+
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.awt.Image;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author raaga
  */
+
 public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    DefaultTableModel model;
+    DefaultTableModel ordersModel;
+    private GroceryOrderDirectory selectedDir;
+    private HotelOrderDirectory selectedDirs;
+    private DeliveryMan deliveryMan;
+    
+    
     /**
-     * Creates new form DeliveryManWorkAreaJPanel
+     * Creates new form LabAssistantWorkAreaJPanel
      */
-    public DeliveryManWorkAreaJPanel() {
+    public DeliveryManWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        ecosystem = business;
+        model = new DefaultTableModel();
+        ordersModel = new DefaultTableModel();
+        orderTable.setModel(model);
+        orderListTable.setModel(ordersModel);
+        orderTable.setVisible(false); 
+ 
+//        model.
+        processJButton1.setVisible(false); 
+        model.addColumn("Item");
+        model.addColumn("Price");
+        model.addColumn("Quantity");
+        model.addColumn("Customer Name");
+        model.addColumn("Shop Name");
+        ordersModel.addColumn("Id");
+        ordersModel.addColumn("Status");        
+        ordersModel.addColumn("Customer name");
+        ordersModel.addColumn("Customer Comment");
+        ordersModel.addColumn("Type");
+        this.deliveryMan = findDeliveryMan(account);
+        title.setText("Welcome "+ deliveryMan.getName());
+        populateTable();
+    }
+    public DeliveryMan findDeliveryMan(UserAccount account) {
+        for(int i = 0; i < ecosystem.getDeliveryManDirectory().getDeliverymanList().size(); i ++) {
+            if(ecosystem.getDeliveryManDirectory().getDeliverymanList().get(i).getAccountDetails().getUsername().equals(account.getUsername())) {
+                return ecosystem.getDeliveryManDirectory().getDeliverymanList().get(i);
+            }
+        }
+        return null;
+    }
+    public void populateTable(){
+        String name = "";
+        for (int i = ordersModel.getRowCount() - 1; i >= 0; i--) {
+            ordersModel.removeRow(i);
+        }
+        for (int i = 0; i < deliveryMan.getGroceryOrderList().size(); i ++) {
+             for (int j = 0; j < deliveryMan.getGroceryOrderList().get(i).getOrderList().size(); j++) {
+                    name = deliveryMan.getGroceryOrderList().get(i).getCustomerDetails().getUsername();
+                }
+            ordersModel.addRow(new Object[]{
+                    i,
+                    deliveryMan.getGroceryOrderList().get(i).getStatus(),
+                    name,
+                    deliveryMan.getGroceryOrderList().get(i).getComment(),
+                    "Grocery"
+                });
+        }
+        for (int i = 0; i < deliveryMan.getHotelOrderLists().size(); i ++) {
+             for (int j = 0; j < deliveryMan.getHotelOrderLists().get(i).getOrderList().size(); j++) {
+                    name = deliveryMan.getHotelOrderLists().get(i).getCustomerDetails().getUsername();
+                }
+            ordersModel.addRow(new Object[]{
+                    i,
+                    deliveryMan.getHotelOrderLists().get(i).getStatus(),
+                    name,
+                    deliveryMan.getHotelOrderLists().get(i).getComment(),
+                    "Restaurant"
+                });
+        }
     }
 
     /**
@@ -26,19 +117,280 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jLabel1 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        orderListTable = new javax.swing.JTable();
+        pickUpButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        orderTable = new javax.swing.JTable();
+        processJButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(0, 108, 103));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setBackground(new java.awt.Color(254, 254, 226));
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Orders Received");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 310, 50));
+
+        title.setBackground(new java.awt.Color(255, 255, 255));
+        title.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 50));
+
+        jPanel1.setBackground(new java.awt.Color(254, 254, 226));
+
+        orderListTable.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        orderListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Message", "Sender", "Receiver", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        orderListTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane2.setViewportView(orderListTable);
+        if (orderListTable.getColumnModel().getColumnCount() > 0) {
+            orderListTable.getColumnModel().getColumn(0).setResizable(false);
+            orderListTable.getColumnModel().getColumn(1).setResizable(false);
+            orderListTable.getColumnModel().getColumn(2).setResizable(false);
+            orderListTable.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        pickUpButton.setBackground(new java.awt.Color(127, 195, 126));
+        pickUpButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        pickUpButton.setForeground(new java.awt.Color(51, 51, 51));
+        pickUpButton.setText("Pick Up Order");
+        pickUpButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        pickUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickUpButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setText("Select Orders");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(pickUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pickUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 550, 230));
+
+        jPanel2.setBackground(new java.awt.Color(254, 254, 226));
+
+        orderTable.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        orderTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Message", "Sender", "Receiver", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        orderTable.setGridColor(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(orderTable);
+        if (orderTable.getColumnModel().getColumnCount() > 0) {
+            orderTable.getColumnModel().getColumn(0).setResizable(false);
+            orderTable.getColumnModel().getColumn(1).setResizable(false);
+            orderTable.getColumnModel().getColumn(2).setResizable(false);
+            orderTable.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        processJButton1.setBackground(new java.awt.Color(0, 83, 170));
+        processJButton1.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        processJButton1.setForeground(new java.awt.Color(255, 255, 255));
+        processJButton1.setText("Process");
+        processJButton1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        processJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                processJButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel4.setText("View Orders");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(270, 270, 270)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(199, 199, 199)
+                        .addComponent(processJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(628, 628, 628))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(processJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 540, 230));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new1.gif"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 720, 400));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void pickUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickUpButtonActionPerformed
+        orderTable.setVisible(true);
+        int selectedRow = orderListTable.getSelectedRow();
+        
+        final int row = orderListTable.getSelectedRow();
+        final String valueInCell = (String)orderListTable.getValueAt(row, 4);
+        System.out.println(valueInCell);
+       
+        if (selectedRow < 0){
+            JOptionPane.showMessageDialog(null,"select a row");
+            return;
+        }
+        orderTable.setVisible(true);
+        processJButton1.setVisible(true);
+        String a = String.valueOf(ordersModel.getValueAt(orderListTable.getSelectedRow(), 1));
+        for (int i = model.getRowCount() - 1; i >= 0; i--) {
+            model.removeRow(i);
+        }
+        ArrayList<GroceryOrder> orderlist;
+        ArrayList<HotelOrder> orderlists;
+        if(valueInCell != "Restaurant"){
+            selectedDir = deliveryMan.getGroceryOrderList().get(orderListTable.getSelectedRow());
+            orderlist = deliveryMan.getGroceryOrderList().get(orderListTable.getSelectedRow()).getOrderList();
+            System.out.println("Orderlists" + orderlist);
+            for (int i = 0; i < orderlist.size(); i++) {
+            model.addRow(new Object[]{
+                orderlist.get(i).getItem(),
+                orderlist.get(i).getPrice(),
+                orderlist.get(i).getQuantity(),
+                selectedDir.getCustomerDetails().getUsername(),
+                selectedDir.getGrocery().getName()
+            });
+        }
+        }else{
+            selectedDirs = deliveryMan.getHotelOrderLists().get(orderListTable.getSelectedRow());
+            orderlists = deliveryMan.getHotelOrderLists().get(orderListTable.getSelectedRow()).getOrderList();
+            System.out.println("Orderlists" + orderlists);
+            for (int i = 0; i < orderlists.size(); i++) {
+            model.addRow(new Object[]{
+                orderlists.get(i).getItem(),
+                orderlists.get(i).getPrice(),
+                orderlists.get(i).getQuantity(),
+                selectedDirs.getCustomerDetails().getUsername(),
+                selectedDirs.getRestaurant().getName()
+            });
+        }
+        }
+
+        
+//        WorkRequest request = (WorkRequest)orderListTable.getValueAt(selectedRow, 0);
+//        request.setReceiver(userAccount);
+//        request.setStatus("Pending");
+//        populateTable();
+        
+    }//GEN-LAST:event_pickUpButtonActionPerformed
+
+    private void processJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButton1ActionPerformed
+        
+      
+        
+    }//GEN-LAST:event_processJButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable orderListTable;
+    private javax.swing.JTable orderTable;
+    private javax.swing.JButton pickUpButton;
+    private javax.swing.JButton processJButton1;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }
