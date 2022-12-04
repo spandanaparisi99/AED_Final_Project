@@ -374,7 +374,10 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
 
     private void processJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButton1ActionPerformed
         
-      
+       DeliveryStatus deliveryStatus = new DeliveryStatus(userProcessContainer, ecosystem, selectedDir, selectedDirs, deliveryMan, userAccount);
+        userProcessContainer.add("processWorkRequestJPanel", deliveryStatus);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_processJButton1ActionPerformed
 
