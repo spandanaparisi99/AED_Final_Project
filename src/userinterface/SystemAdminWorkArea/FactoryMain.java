@@ -4,6 +4,10 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.EcoSystem;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author raaga
@@ -11,9 +15,14 @@ package userinterface.SystemAdminWorkArea;
 public class FactoryMain extends javax.swing.JPanel {
 
     /**
-     * Creates new form FactoryMain
+     * Creates new form HospitalMain
      */
-    public FactoryMain() {
+    JPanel userProcessContainer;
+    private static EcoSystem ecosystem;
+    
+    public FactoryMain(JPanel userProcessContainer1, EcoSystem system) {
+        userProcessContainer = userProcessContainer1;
+        ecosystem = system;
         initComponents();
     }
 
@@ -26,19 +35,97 @@ public class FactoryMain extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ManageGroceryButton = new javax.swing.JButton();
+        manageGroceryManagersButton = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(0, 108, 103));
+
+        ManageGroceryButton.setBackground(new java.awt.Color(127, 195, 126));
+        ManageGroceryButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ManageGroceryButton.setForeground(new java.awt.Color(51, 51, 51));
+        ManageGroceryButton.setText("View Factory Outlet");
+        ManageGroceryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageGroceryButtonActionPerformed(evt);
+            }
+        });
+
+        manageGroceryManagersButton.setBackground(new java.awt.Color(127, 195, 126));
+        manageGroceryManagersButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        manageGroceryManagersButton.setForeground(new java.awt.Color(51, 51, 51));
+        manageGroceryManagersButton.setText("Factory Manager");
+        manageGroceryManagersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageGroceryManagersButtonActionPerformed(evt);
+            }
+        });
+
+        btnBack.setBackground(new java.awt.Color(127, 195, 126));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(473, 473, 473)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ManageGroceryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(manageGroceryManagersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(501, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(147, 147, 147)
+                .addComponent(ManageGroceryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(manageGroceryManagersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(338, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ManageGroceryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageGroceryButtonActionPerformed
+        ManageFactory rest= new ManageFactory(userProcessContainer, ecosystem);
+        userProcessContainer.add("manageNetworkJPanel",rest);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_ManageGroceryButtonActionPerformed
+
+    private void manageGroceryManagersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageGroceryManagersButtonActionPerformed
+        // TODO add your handling code here:
+        ManagerFactoryManagers restM= new ManagerFactoryManagers(userProcessContainer, ecosystem);
+        userProcessContainer.add("manageNetworkJPanel",restM);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_manageGroceryManagersButtonActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        SystemAdminWorkAreaJPanel dm= new SystemAdminWorkAreaJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("manageNetworkJPanel",dm);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ManageGroceryButton;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton manageGroceryManagersButton;
     // End of variables declaration//GEN-END:variables
 }
