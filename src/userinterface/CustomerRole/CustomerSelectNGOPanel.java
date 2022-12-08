@@ -71,7 +71,7 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
         model1.addColumn("Price");
         model1.addColumn("Date");
         
-        title.setText("Welcome to:"+ legal.getName() + " we offer best service");
+        title.setText("Welcome to:"+ ngo.getName() + " we offer best service");
         showMenuTable();
         
         ImageIcon icon7 =  new ImageIcon("./src/images/customer_panel_cart.png");
@@ -85,7 +85,7 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
     }
     
     public void showMenuTable() {
-        HashMap<String, String> menu = legal.getMenu();
+        HashMap<String, String> menu = ngo.getMenu();
         if (menu.size() > 0) {
             for (Map.Entry<String, String> e : menu.entrySet()) {
                 model.addRow(new Object[]{
@@ -96,12 +96,12 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
         }
     }
         public void showCartTable() {
-        if (legalOrderDirectory.getOrderList().size() > 0) {
-            for (int i = 0; i < legalOrderDirectory.getOrderList().size(); i++) {
+        if (ngoOrderDirectory.getOrderList().size() > 0) {
+            for (int i = 0; i < ngoOrderDirectory.getOrderList().size(); i++) {
                 model1.addRow(new Object[]{
-                    legalOrderDirectory.getOrderList().get(i).getItem(),
-                    legalOrderDirectory.getOrderList().get(i).getPrice(),
-                    legalOrderDirectory.getOrderList().get(i).getDate()
+                    ngoOrderDirectory.getOrderList().get(i).getItem(),
+                    ngoOrderDirectory.getOrderList().get(i).getPrice(),
+                    ngoOrderDirectory.getOrderList().get(i).getDate()
                 });
             }
         }
@@ -383,7 +383,7 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
          String date1 = format1.format(date);
          System.out.println(date1);
         
-        legalOrderDirectory.createOrder(selectedItem, selectedPrice, date1, legal, userAccount);
+        ngoOrderDirectory.createOrder(selectedItem, selectedPrice, date1, ngo, userAccount);
         model1.addRow(new Object[]{
             selectedItem,
             selectedPrice,
@@ -407,22 +407,22 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackbuttonActionPerformed
  
     public void setOrderListLegal(Customer cust) {
-         for(int i = 0; i <  legalOrderDirectory.getOrderList().size(); i ++) {
-               legal.getOrderList().add(legalOrderDirectory.getOrderList().get(i));
-               cust.getNGOorderList().add(legalOrderDirectory.getOrderList().get(i));
+         for(int i = 0; i <  ngoOrderDirectory.getOrderList().size(); i ++) {
+               ngo.getOrderList().add(ngoOrderDirectory.getOrderList().get(i));
+               cust.getNGOorderList().add(ngoOrderDirectory.getOrderList().get(i));
 
         }
-//        legal.getOrders().put(String.valueOf(legal.getOrders().size()), legalOrderDirectory.getOrderList());
-        cust.getNGOorderDirectoryList().add(legalOrderDirectory);
-        legal.getOrderDirectoryList().add(legalOrderDirectory);
+//        ngo.getOrders().put(String.valueOf(ngo.getOrders().size()), ngoOrderDirectory.getOrderList());
+        cust.getNGOorderDirectoryList().add(ngoOrderDirectory);
+        ngo.getOrderDirectoryList().add(ngoOrderDirectory);
     }
     private void BookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookAppointmentActionPerformed
          Customer cust = findCustomer();
         if("Credit".equals(cust.getCardType())){
             
          setOrderListLegal(cust);
-          for(int i = 0; i < legalOrderDirectory.getOrderList().size(); i ++) {
-            Total+= (Double.parseDouble(legalOrderDirectory.getOrderList().get(i).getPrice()));
+          for(int i = 0; i < ngoOrderDirectory.getOrderList().size(); i ++) {
+            Total+= (Double.parseDouble(ngoOrderDirectory.getOrderList().get(i).getPrice()));
         }
         CustomerPaymentPanels mm = new CustomerPaymentPanels(screen, cust, Total, "We have received your order. We will update as soon as your have appointment is scheduled.");
         screen.setRightComponent(mm);

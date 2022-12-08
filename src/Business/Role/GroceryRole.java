@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  * @author RAJAS
  */
-public class GroceryRole {
+public class GroceryRole extends Role {
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {

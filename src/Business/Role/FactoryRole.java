@@ -4,6 +4,7 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
 import Business.Organization;
 import Business.UserAccount.UserAccount;
 import userinterface.FactoryAdminRole.AdminWorkAreaJPanel;
@@ -13,7 +14,7 @@ import javax.swing.JPanel;
  *
  * @author RAJAS
  */
-public class FactoryRole {
+public class FactoryRole extends Role{
     
         @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
