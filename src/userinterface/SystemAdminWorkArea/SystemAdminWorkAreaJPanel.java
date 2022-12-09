@@ -56,21 +56,25 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         Image image2 = icon2.getImage().getScaledInstance(217, 167, Image.SCALE_SMOOTH);
         jLabel3.setIcon(new ImageIcon(image2));
         
-        ImageIcon icon3 =  new ImageIcon("./src/images/therapist.png");
+        ImageIcon icon3 =  new ImageIcon("./src/images/government.png");
         Image image3 = icon3.getImage().getScaledInstance(217, 167, Image.SCALE_SMOOTH);
         jLabel8.setIcon(new ImageIcon(image3));
         
-        ImageIcon icon4 =  new ImageIcon("./src/images/housemaid.png");
+        ImageIcon icon4 =  new ImageIcon("./src/images/farm.png");
         Image image4 = icon4.getImage().getScaledInstance(217, 167, Image.SCALE_SMOOTH);
         jLabel9.setIcon(new ImageIcon(image4));
         
-        ImageIcon icon5 =  new ImageIcon("./src/images/adminlawyer.png");
+        ImageIcon icon5 =  new ImageIcon("./src/images/ngo.png");
         Image image5 = icon5.getImage().getScaledInstance(217, 167, Image.SCALE_SMOOTH);
         jLabel10.setIcon(new ImageIcon(image5));
         
-        ImageIcon icon6 =  new ImageIcon("./src/images/restaurant_food.png");
+        ImageIcon icon6 =  new ImageIcon("./src/images/restaurant.png");
         Image image6 = icon6.getImage().getScaledInstance(217, 167, Image.SCALE_SMOOTH);
         jLabel11.setIcon(new ImageIcon(image6));
+        
+        ImageIcon icon7 =  new ImageIcon("./src/images/factory.png");
+        Image image7 = icon7.getImage().getScaledInstance(217, 167, Image.SCALE_SMOOTH);
+        jLabel12.setIcon(new ImageIcon(image7));
         
     }
     
@@ -226,7 +230,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jScrollPane1.setBackground(new java.awt.Color(240, 248, 255));
 
-        jTree.setBackground(new java.awt.Color(240, 248, 255));
+        jTree.setBackground(new java.awt.Color(254, 254, 226));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("JTree");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("test");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("test1");
@@ -276,9 +280,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTree);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(0, 108, 103));
 
-        jPanel3.setBackground(new java.awt.Color(0, 108, 103));
+        jPanel3.setBackground(new java.awt.Color(254, 254, 226));
 
         ManageCustomerButton.setBackground(new java.awt.Color(127, 195, 126));
         ManageCustomerButton.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -290,7 +294,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.gif"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -301,7 +305,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ManageCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,7 +317,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(20, 20, 20))
         );
 
-        jPanel4.setBackground(new java.awt.Color(0, 108, 103));
+        jPanel4.setBackground(new java.awt.Color(254, 254, 226));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delivery.gif"))); // NOI18N
 
@@ -331,12 +335,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ManageDeliveryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(ManageDeliveryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +355,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(20, 20, 20))
         );
 
-        jPanel5.setBackground(new java.awt.Color(0, 108, 103));
+        jPanel5.setBackground(new java.awt.Color(254, 254, 226));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grocery.png"))); // NOI18N
 
@@ -383,7 +390,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(20, 20, 20))
         );
 
-        jPanel6.setBackground(new java.awt.Color(0, 108, 103));
+        jPanel6.setBackground(new java.awt.Color(254, 254, 226));
 
         jLabel8.setBackground(new java.awt.Color(0, 108, 103));
 
@@ -418,7 +425,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22))
         );
 
-        jPanel7.setBackground(new java.awt.Color(0, 108, 103));
+        jPanel7.setBackground(new java.awt.Color(254, 254, 226));
 
         jLabel9.setBackground(new java.awt.Color(0, 108, 103));
 
@@ -441,7 +448,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(FarmerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,7 +460,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22))
         );
 
-        jPanel8.setBackground(new java.awt.Color(0, 108, 103));
+        jPanel8.setBackground(new java.awt.Color(254, 254, 226));
 
         jLabel10.setBackground(new java.awt.Color(0, 108, 103));
 
@@ -490,7 +497,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(22, 22, 22))
         );
 
-        jPanel9.setBackground(new java.awt.Color(0, 108, 103));
+        jPanel9.setBackground(new java.awt.Color(254, 254, 226));
 
         jLabel11.setBackground(new java.awt.Color(0, 108, 103));
 
@@ -537,7 +544,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jPanel10.setBackground(new java.awt.Color(0, 108, 103));
+        jPanel10.setBackground(new java.awt.Color(254, 254, 226));
 
         jLabel12.setBackground(new java.awt.Color(0, 108, 103));
 
@@ -581,14 +588,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(112, 112, 112)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -600,9 +607,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(32, 32, 32)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(492, Short.MAX_VALUE))
+                .addContainerGap(447, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(335, 335, 335)
@@ -612,14 +619,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(21, 21, 21)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -628,7 +635,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1726, 1726, 1726))
+                .addGap(1711, 1711, 1711))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(196, 196, 196)
@@ -644,7 +651,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
