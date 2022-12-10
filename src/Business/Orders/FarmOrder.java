@@ -11,7 +11,6 @@ package Business.Orders;
 public class FarmOrder {
     private String item;
     private String price;
-    private String date;
     private String time;
     private String total;
 
@@ -45,13 +44,5 @@ public class FarmOrder {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 }

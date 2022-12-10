@@ -120,11 +120,10 @@ public class FarmOrdersDirectory {
         }
     }
 
-    public FarmOrder createOrder(String item, String price, String date, String total, String hrs, FarmManager leg, UserAccount user) {
+    public FarmOrder createOrder(String item, String price, String total, String hrs, FarmManager leg, UserAccount user) {
         FarmOrder order1 = new FarmOrder();
         order1.setItem(item);
         order1.setPrice(price);
-        order1.setDate(date);
         order1.setTime(hrs);
         order1.setTotal(total);
         farmManager = leg;
