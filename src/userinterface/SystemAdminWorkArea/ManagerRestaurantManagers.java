@@ -27,7 +27,7 @@ public class ManagerRestaurantManagers extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     private static EcoSystem ecosystem;
-//    private ArrayList<UserAccount> userAccounts = new ArrayList<UserAccount>();    
+//  private ArrayList<UserAccount> userAccounts = new ArrayList<UserAccount>();    
     private ArrayList<HotelManager> managersList = new ArrayList<HotelManager>();
 
     DefaultTableModel model;
@@ -619,6 +619,7 @@ public class ManagerRestaurantManagers extends javax.swing.JPanel {
     }
     
     private void addManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addManagerButtonActionPerformed
+        
         // TODO add your handling code here:
         Boolean isValid = validateFields(usernameText.getText(), AddressText.getText(), phoneText.getText(), restManagerText.getText(), restPwdText.getPassword(), (String) netwrokCombo.getSelectedItem());
         if (!isValid) {
@@ -630,6 +631,7 @@ public class ManagerRestaurantManagers extends javax.swing.JPanel {
                 return;
             }
         }
+        
         char[] ch = restPwdText.getPassword();
         String pwd = new String(ch);
         String netwrokname = (String) netwrokCombo.getSelectedItem();
@@ -650,6 +652,7 @@ public class ManagerRestaurantManagers extends javax.swing.JPanel {
         restPwdText.setText("");
         phoneText.setText("");
         AddressText.setText("");
+        
     }//GEN-LAST:event_addManagerButtonActionPerformed
 
     private void updateRestManagerTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateRestManagerTextActionPerformed
