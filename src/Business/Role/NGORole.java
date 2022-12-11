@@ -13,7 +13,7 @@ import userinterface.NGOAdminRole.AdminWorkAreaJPanel;
  *
  * @author RAJAS
  */
-public class NGORole {
+public class NGORole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
