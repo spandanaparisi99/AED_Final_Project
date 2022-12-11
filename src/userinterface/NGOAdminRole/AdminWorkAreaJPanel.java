@@ -101,7 +101,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(254, 254, 226));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Admin Work Area: ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 670, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, 670, 40));
 
         updatestorepanel.setBackground(new java.awt.Color(254, 254, 226));
         updatestorepanel.setForeground(new java.awt.Color(254, 254, 226));
