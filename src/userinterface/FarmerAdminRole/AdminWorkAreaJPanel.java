@@ -74,33 +74,41 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         updateButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 108, 103));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ManageServicesButton.setBackground(new java.awt.Color(204, 255, 255));
-        ManageServicesButton.setText("Manage Services");
+        ManageServicesButton.setBackground(new java.awt.Color(127, 195, 126));
+        ManageServicesButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ManageServicesButton.setText("Manage Inventory");
         ManageServicesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ManageServicesButtonActionPerformed(evt);
             }
         });
+        add(ManageServicesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 280, 156, 45));
 
-        ManageOrdersButton.setBackground(new java.awt.Color(204, 255, 255));
+        ManageOrdersButton.setBackground(new java.awt.Color(127, 195, 126));
+        ManageOrdersButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ManageOrdersButton.setText("Manage Orders");
         ManageOrdersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ManageOrdersButtonActionPerformed(evt);
             }
         });
+        add(ManageOrdersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 380, 160, 45));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 254, 226));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("HouseHold Admin Area");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jLabel1.setText("Farm Admin Area");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 560, 40));
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(254, 254, 226));
         enterpriseLabel.setText("Welcome:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 458, 30));
 
-        updatestorepanel.setBackground(new java.awt.Color(204, 255, 255));
+        updatestorepanel.setBackground(new java.awt.Color(254, 254, 226));
 
         nameText.setForeground(new java.awt.Color(72, 72, 72));
 
@@ -120,9 +128,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Update Your Information");
 
-        updateButton.setBackground(new java.awt.Color(0, 0, 0));
-        updateButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setBackground(new java.awt.Color(127, 195, 126));
+        updateButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(51, 51, 51));
         updateButton.setText("Update");
         updateButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -135,31 +143,32 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         updatestorepanel.setLayout(updatestorepanelLayout);
         updatestorepanelLayout.setHorizontalGroup(
             updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updatestorepanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(185, 185, 185))
             .addGroup(updatestorepanelLayout.createSequentialGroup()
                 .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(updatestorepanelLayout.createSequentialGroup()
-                        .addGap(129, 129, 129)
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(updatestorepanelLayout.createSequentialGroup()
+                        .addGap(94, 94, 94)
                         .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(nameLabel)
                             .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(nameText, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                            .addComponent(phoneText)))
-                    .addGroup(updatestorepanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(updatestorepanelLayout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(nameText)
+                            .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         updatestorepanelLayout.setVerticalGroup(
             updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(updatestorepanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameLabel)
                     .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -167,55 +176,15 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneLabel)
                     .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/EZ2_elvisme.gif"))); // NOI18N
+        add(updatestorepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(ManageServicesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(ManageOrdersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(updatestorepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(358, 358, 358)
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(339, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ManageOrdersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ManageServicesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(updatestorepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(475, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/farm_admin.gif"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 450, 270));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ManageServicesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageServicesButtonActionPerformed
