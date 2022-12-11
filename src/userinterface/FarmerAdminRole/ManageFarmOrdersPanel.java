@@ -52,7 +52,6 @@ public class ManageFarmOrdersPanel extends javax.swing.JPanel {
         
         model.addColumn("Item");
         model.addColumn("Price");
-        model.addColumn("Date");
         model.addColumn("Customer");
         ordersModel.addColumn("Id");
         ordersModel.addColumn("Status");
@@ -289,7 +288,6 @@ public class ManageFarmOrdersPanel extends javax.swing.JPanel {
                 orderlist.get(i).getItem(),
 
                 orderlist.get(i).getPrice(),
-                orderlist.get(i).getDate(),
                 selectedDir.getCustomerDetails().getUsername()
             });
         }
