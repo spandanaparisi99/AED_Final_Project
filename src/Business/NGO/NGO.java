@@ -4,10 +4,156 @@
  */
 package Business.NGO;
 
+import Business.Orders.NGOPlanOrder;
+import Business.Orders.NGOPlansDirectory;
+import Business.UserAccount.UserAccount;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
  * @author raaga
  */
 public class NGO {
+    
+    private String name;
+    private int id;
+    private static int count = 1;
+    private String managerName;
+    private String address;
+    private HashMap<String, String> menus;
+    private String phone;
+    private String Email;
+    private UserAccount accountDetails = new UserAccount();
+    private ArrayList<NGOPlanOrder> orderList;
+    private ArrayList<NGOPlansDirectory> orderDirectoryList;
+    private HashMap<String, ArrayList<NGOPlanOrder>> orders;
+    private String Network;
+
+    public String getNetwork() {
+        return Network;
+    }
+
+    public void setNetwork(String Network) {
+        this.Network = Network;
+    }
+
+    public HashMap<String, String> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(HashMap<String, String> menus) {
+        this.menus = menus;
+    }
+
+    public HashMap<String, ArrayList<NGOPlanOrder>> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(HashMap<String, ArrayList<NGOPlanOrder>> orders) {
+        this.orders = orders;
+    }
+
+    
+    
+    public HashMap<String, String> getMenu() {
+        return menus;
+    }
+
+    public void setMenu(HashMap<String, String> menus) {
+        this.menus = menus;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public ArrayList<NGOPlansDirectory> getOrderDirectoryList() {
+        return orderDirectoryList;
+    }
+
+    public void setOrderDirectoryList(ArrayList<NGOPlansDirectory> orderDirectoryList) {
+        this.orderDirectoryList = orderDirectoryList;
+    }
+    
+    public ArrayList<NGOPlanOrder> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(ArrayList<NGOPlanOrder> orderList) {
+        this.orderList = orderList;
+    }
+    
+    public UserAccount getAccountDetails() {
+        return accountDetails;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    
+    public String getManagerName() {
+        return managerName;
+    }
+
+    public void setManagerName(String managerName) {
+        this.managerName = managerName;
+    }
+
+    public void setAccountDetails(UserAccount accountDetails) {
+        this.accountDetails = accountDetails;
+    }
+    
+    public NGO() {
+        id = count;
+        count++;
+        menus = new HashMap<String, String>();
+        orderList = new ArrayList<NGOPlanOrder>();
+        orderDirectoryList = new ArrayList<NGOPlansDirectory>();
+    }
+    
+    public void setMenuItem(String name, String value) {
+        menus.put(name, value);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        NGO.count = count;
+    }
     
 }
