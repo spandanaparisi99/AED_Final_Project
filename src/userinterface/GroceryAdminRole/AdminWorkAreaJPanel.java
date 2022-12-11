@@ -1,10 +1,10 @@
 
 
-package userinterface.FactoryAdminRole;
+package userinterface.GroceryAdminRole;
 
 
 import Business.EcoSystem;
-import Business.FactoryOutlet.Factory;
+import Business.Grocery.Grocery;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -20,7 +20,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     EcoSystem ecosystem;
     UserAccount ua;
     String managerName;
-    Factory factory;
+    Grocery grocery;
     
     /** Creates new form AdminWorkAreaJPanel */
     public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount ua, EcoSystem system) {
@@ -29,22 +29,20 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         this.ua = ua;
         managerName = ua.getEmployee().getName();
         ecosystem = system;
-        factory = findManageFactory(); 
-        valueLabel.setText(factory.getManager());
-        jLabel1.setText("Admin Work Area: " + factory.getName());
+        grocery = findManageGrocery();
+        valueLabel.setText(grocery.getManager());
+        jLabel1.setText("Admin Work Area: "+grocery.getName());
       
         //valueLabel.setText();
     }
-    
-    public Factory findManageFactory() {
-        for(int i = 0; i < ecosystem.getFactoryDirectory().getFactoryList().size(); i ++) {
-            if(ecosystem.getFactoryDirectory().getFactoryList().get(i).getUserAccount().getUsername().equals(this.ua.getUsername())) {
-                return ecosystem.getFactoryDirectory().getFactoryList().get(i);
+   public Grocery findManageGrocery() {
+        for(int i = 0; i < ecosystem.getGroceryDirectory().getGroceryList().size(); i ++) {
+            if(ecosystem.getGroceryDirectory().getGroceryList().get(i).getUserAccount().getUsername().equals(this.ua.getUsername())) {
+                return ecosystem.getGroceryDirectory().getGroceryList().get(i);
             }
         }
         return null;
     }
-   
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -65,6 +63,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 108, 103));
+        setForeground(new java.awt.Color(254, 254, 226));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -97,11 +96,11 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         nameLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         nameLabel.setForeground(new java.awt.Color(72, 72, 72));
         nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        nameLabel.setText("Factory Outlet Name");
+        nameLabel.setText("Grocery Store Name");
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Update Factory Outlet Information");
+        jLabel5.setText("Update Grocery Store Information");
 
         locationLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         locationLabel.setForeground(new java.awt.Color(72, 72, 72));
@@ -190,7 +189,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         ManageGroceryInventoryButton.setBackground(new java.awt.Color(127, 195, 126));
         ManageGroceryInventoryButton.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         ManageGroceryInventoryButton.setForeground(new java.awt.Color(51, 51, 51));
-        ManageGroceryInventoryButton.setText("Manage Factory Items");
+        ManageGroceryInventoryButton.setText("Manage Grocery List");
         ManageGroceryInventoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ManageGroceryInventoryButtonActionPerformed(evt);
@@ -207,7 +206,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_locationTextActionPerformed
 
     private void ManageOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageOrdersButtonActionPerformed
-        ManageOrdersPanel mm = new ManageOrdersPanel(userProcessContainer, ecosystem, factory, ua);
+        ManageOrdersPanel mm = new ManageOrdersPanel(userProcessContainer, ecosystem, grocery, ua);
         userProcessContainer.add("manageNetworkJPanel",mm);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -215,7 +214,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ManageOrdersButtonActionPerformed
 
     private void ManageGroceryInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageGroceryInventoryButtonActionPerformed
-        ManageFactoryInventoryPanel mm = new ManageFactoryInventoryPanel(userProcessContainer, ecosystem, factory, ua);
+        ManageGroceryInventoryPanel mm = new ManageGroceryInventoryPanel(userProcessContainer, ecosystem, grocery, ua);
         userProcessContainer.add("manageNetworkJPanel",mm);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -234,9 +233,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Phone Number must have digits only");
             return;
         } else {
-            factory.setName(nameText.getText());
-            factory.setLocation(locationText.getText());
-            factory.setPhone(phoneText.getText());
+            grocery.setName(nameText.getText());
+            grocery.setLocation(locationText.getText());
+            grocery.setPhone(phoneText.getText());
             JOptionPane.showMessageDialog(null, "Grocery Name updated successfully");
         }
         // TODO add your handling code here:
