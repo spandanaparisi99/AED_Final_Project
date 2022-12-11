@@ -4,10 +4,20 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import userinterface.SystemAdminWorkArea.NetworkPanel;
+import javax.swing.JPanel;
+
+
 /**
  *
  * @author RAJAS
  */
 public class SystemAdminRole {
+    
+        public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem system) {
+        return new NetworkPanel(userProcessContainer, system);
+    }
     
 }
