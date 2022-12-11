@@ -31,7 +31,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         managerName = ua.getEmployee().getName();
         ecosystem = system;
         govOfficial = findManageGrocery();
-        valueLabel.setText(govOfficial.getName());
+       
         jLabel1.setText("Admin Work Area: "+govOfficial.getName());
         //valueLabel.setText();
     }
@@ -56,8 +56,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         manageEmployeeJButton = new javax.swing.JButton();
         manageOrganizationJButton = new javax.swing.JButton();
-        enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
         updatestorepanel = new javax.swing.JPanel();
         nameText = new javax.swing.JTextField();
         phoneText = new javax.swing.JTextField();
@@ -69,22 +67,25 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         phoneText1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 108, 103));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Admin Role");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel1.setText("Government Work Area");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, -1, -1));
 
+        manageEmployeeJButton.setBackground(new java.awt.Color(127, 195, 126));
         manageEmployeeJButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        manageEmployeeJButton.setText("Manage menu");
+        manageEmployeeJButton.setText("Manage Programs");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 150, 50));
+        add(manageEmployeeJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 150, 50));
 
+        manageOrganizationJButton.setBackground(new java.awt.Color(127, 195, 126));
         manageOrganizationJButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         manageOrganizationJButton.setText("Manage Orders");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -92,17 +93,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 150, 50));
+        add(manageOrganizationJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 150, 50));
 
-        enterpriseLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        enterpriseLabel.setText("Therapist Name :");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 170, 30));
-
-        valueLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 130, -1));
-
-        updatestorepanel.setBackground(new java.awt.Color(204, 255, 255));
+        updatestorepanel.setBackground(new java.awt.Color(254, 254, 226));
 
         nameText.setForeground(new java.awt.Color(72, 72, 72));
 
@@ -122,9 +115,9 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Update Your Information");
 
-        updateButton.setBackground(new java.awt.Color(0, 0, 0));
-        updateButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setBackground(new java.awt.Color(127, 195, 126));
+        updateButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(51, 51, 51));
         updateButton.setText("Update");
         updateButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -165,11 +158,12 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                             .addGroup(updatestorepanelLayout.createSequentialGroup()
                                 .addComponent(phoneLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(phoneText1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(updatestorepanelLayout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(phoneText1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(60, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updatestorepanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(151, 151, 151))
         );
         updatestorepanelLayout.setVerticalGroup(
             updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,15 +182,15 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phoneLabel1)
                     .addComponent(phoneText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(38, 38, 38))
         );
 
-        add(updatestorepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 430, 290));
+        add(updatestorepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 430, 290));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ItDJ.gif"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 250, 260));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/government_@.gif"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 180, 380, 330));
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
@@ -235,7 +229,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -249,7 +242,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField phoneText1;
     private javax.swing.JButton updateButton;
     private javax.swing.JPanel updatestorepanel;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
     
 }
