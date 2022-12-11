@@ -4,18 +4,50 @@
  */
 package userinterface.NGOAdminRole;
 
+import Business.EcoSystem;
+import Business.Grocery.Grocery;
+import Business.NGO.NGO;    
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import userinterface.GroceryAdminRole.ManageGroceryInventoryPanel;
+
 /**
  *
  * @author raaga
  */
+
 public class AdminWorkAreaJPanel extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    DefaultTableModel model;
+    UserAccount ua;
+    NGO ngo;
 
     /**
      * Creates new form AdminWorkAreaJPanel
      */
-    public AdminWorkAreaJPanel() {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount ua, EcoSystem system) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ua = ua;
+        ecosystem = system;
+        ngo = findManageGrocery();
+        jLabel1.setText("Admin Work Area: "+ngo.getName());
     }
+    
+   public NGO findManageGrocery() {
+        for(int i = 0; i < ecosystem.getNGODirectory().getNGOList().size(); i++) {
+            if(ecosystem.getNGODirectory().getNGOList().get(i).getAccountDetails().getUsername().equals(this.ua.getUsername())){
+                System.out.println(ecosystem.getNGODirectory().getNGOList().get(i));
+                return ecosystem.getNGODirectory().getNGOList().get(i);
+            }
+        }
+        return null;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,19 +58,179 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        ManageServicesButton = new javax.swing.JButton();
+        ManageOrdersButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        enterpriseLabel = new javax.swing.JLabel();
+        updatestorepanel = new javax.swing.JPanel();
+        nameText = new javax.swing.JTextField();
+        phoneText = new javax.swing.JTextField();
+        phoneLabel = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        updateButton = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(0, 108, 103));
+        setForeground(new java.awt.Color(254, 254, 226));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ManageServicesButton.setBackground(new java.awt.Color(127, 195, 126));
+        ManageServicesButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ManageServicesButton.setForeground(new java.awt.Color(51, 51, 51));
+        ManageServicesButton.setText("Manage Services");
+        ManageServicesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageServicesButtonActionPerformed(evt);
+            }
+        });
+        add(ManageServicesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 151, 200, 49));
+
+        ManageOrdersButton.setBackground(new java.awt.Color(127, 195, 126));
+        ManageOrdersButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ManageOrdersButton.setForeground(new java.awt.Color(51, 51, 51));
+        ManageOrdersButton.setText("Manage Orders");
+        ManageOrdersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageOrdersButtonActionPerformed(evt);
+            }
+        });
+        add(ManageOrdersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 151, 190, 49));
+
+        jLabel1.setBackground(new java.awt.Color(254, 254, 226));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Admin Work Area: ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 15, 560, 40));
+
+        enterpriseLabel.setBackground(new java.awt.Color(254, 254, 226));
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setForeground(new java.awt.Color(254, 254, 226));
+        enterpriseLabel.setText("Welcome:");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 60, 120, 30));
+
+        updatestorepanel.setBackground(new java.awt.Color(254, 254, 226));
+        updatestorepanel.setForeground(new java.awt.Color(254, 254, 226));
+
+        nameText.setForeground(new java.awt.Color(72, 72, 72));
+
+        phoneText.setForeground(new java.awt.Color(72, 72, 72));
+
+        phoneLabel.setForeground(new java.awt.Color(72, 72, 72));
+        phoneLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        phoneLabel.setText("Phone");
+
+        nameLabel.setForeground(new java.awt.Color(72, 72, 72));
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        nameLabel.setText("Company Name");
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Update Legal Information");
+
+        updateButton.setBackground(new java.awt.Color(127, 195, 126));
+        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(51, 51, 51));
+        updateButton.setText("Update");
+        updateButton.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout updatestorepanelLayout = new javax.swing.GroupLayout(updatestorepanel);
+        updatestorepanel.setLayout(updatestorepanelLayout);
+        updatestorepanelLayout.setHorizontalGroup(
+            updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updatestorepanelLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nameLabel)
+                    .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updatestorepanelLayout.createSequentialGroup()
+                .addGap(0, 61, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, updatestorepanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(166, 166, 166))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        updatestorepanelLayout.setVerticalGroup(
+            updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(updatestorepanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameLabel)
+                    .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(updatestorepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneLabel)
+                    .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
+
+        add(updatestorepanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ManageServicesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageServicesButtonActionPerformed
+        // TODO add your handling code here:
+        ManageNGOServicesPanel mm = new ManageNGOServicesPanel(userProcessContainer, ecosystem, ngo, ua);
+        userProcessContainer.add("manageNetworkJPanel",mm);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_ManageServicesButtonActionPerformed
+
+    private void ManageOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageOrdersButtonActionPerformed
+        // TODO add your handling code here:
+         ManageNGOOrdersPanel mm = new ManageNGOOrdersPanel(userProcessContainer, ecosystem, ngo, ua);
+        userProcessContainer.add("manageNetworkJPanel",mm);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_ManageOrdersButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+
+        if(phoneText.getText().isEmpty() || nameText.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Fields cannot be empty");
+            return;
+        }else if(phoneText.getText().length() != 10) {
+            JOptionPane.showMessageDialog(null, "PhoneNumber must be of 10 digits");
+            return;
+        }else if(!phoneText.getText().matches("^[0-9]+$")) {
+            JOptionPane.showMessageDialog(null, "Phone Number must have digits only");
+            return;
+        } else {
+            ngo.setName(nameText.getText());
+            ngo.setPhone(phoneText.getText());
+            JOptionPane.showMessageDialog(null, "Comapany details updated successfully");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ManageOrdersButton;
+    private javax.swing.JButton ManageServicesButton;
+    private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameText;
+    private javax.swing.JLabel phoneLabel;
+    private javax.swing.JTextField phoneText;
+    private javax.swing.JButton updateButton;
+    private javax.swing.JPanel updatestorepanel;
     // End of variables declaration//GEN-END:variables
 }
