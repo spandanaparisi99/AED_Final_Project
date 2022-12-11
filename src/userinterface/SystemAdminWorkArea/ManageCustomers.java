@@ -1,20 +1,86 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package userinterface.SystemAdminWorkArea;
+
+import Business.Customer.Customer;
+import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Role.CustomerRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author raaga
  */
 public class ManageCustomers extends javax.swing.JPanel {
+    
+    JPanel userProcessContainer;
+    private static EcoSystem ecosystem;
+    private ArrayList<Customer> customerList = new ArrayList<Customer>();
+    DefaultTableModel model;
 
     /**
      * Creates new form ManageCustomers
      */
-    public ManageCustomers() {
+    public ManageCustomers(JPanel userProcessContainer1, EcoSystem system) {
         initComponents();
+        userProcessContainer = userProcessContainer1;
+        ecosystem = system;
+        for (int i = 0; i < system.getCustomerDirectory().getCustomerList().size(); i++) {
+            customerList.add(system.getCustomerDirectory().getCustomerList().get(i));
+        }
+        for (int i = 0; i < ecosystem.getcreateNetwork().getNetwork().size(); i++) {
+            customerListCombo1.addItem(ecosystem.getcreateNetwork().getNetwork().get(i));
+        }
+        model = new DefaultTableModel();
+        customerListTable.setModel(model);
+        model.addColumn("Name");
+        model.addColumn("Address");
+        model.addColumn("Phone");
+        model.addColumn("Email");
+        model.addColumn("Network");
+        viewCustomerList();
+        showUpdateList();
+    }
+    
+    public void viewCustomerList() {
+        if (customerList.size() > 0) {
+            for (int i = 0; i < customerList.size(); i++) {
+                model.addRow(new Object[]{
+                    customerList.get(i).getName(),
+                    customerList.get(i).getAddress(),
+                    customerList.get(i).getPhone(),
+                    customerList.get(i).getEmail(),
+                    customerList.get(i).getNetwork()
+                });
+            }
+        }
+    }
+    
+    public void showUpdateList() {
+        for (int i = 0; i < customerList.size(); i++) {
+            customerListCombo.addItem(customerList.get(i).getName());
+        }
+    }
+    
+    public void reset() {
+        customerListCombo.setSelectedIndex(0);
+        updateNameText.setText("");
+        updateUsernameText.setText("");
+        updatePwdText.setText("");
+        updatePhoneText.setText("");
+        updateAddressText.setText("");
     }
 
     /**
@@ -26,19 +92,554 @@ public class ManageCustomers extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel5 = new javax.swing.JLabel();
+        updateRestManagerLabel = new javax.swing.JLabel();
+        restPwdLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        phoneLabel = new javax.swing.JLabel();
+        addressLabel = new javax.swing.JLabel();
+        AddressText = new javax.swing.JTextField();
+        phoneText = new javax.swing.JTextField();
+        restPwdText = new javax.swing.JPasswordField();
+        usernameText = new javax.swing.JTextField();
+        nameText = new javax.swing.JTextField();
+        viewLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        customerListTable = new javax.swing.JTable();
+        AddBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        selectManagerLabel1 = new javax.swing.JLabel();
+        customerListCombo = new javax.swing.JComboBox<>();
+        updateNameText = new javax.swing.JTextField();
+        updateUsernameText = new javax.swing.JTextField();
+        restPwdLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        updatePwdText = new javax.swing.JPasswordField();
+        updatePhoneText = new javax.swing.JTextField();
+        phoneLabel1 = new javax.swing.JLabel();
+        addressLabel1 = new javax.swing.JLabel();
+        updateAddressText = new javax.swing.JTextField();
+        deleteButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        title = new javax.swing.JLabel();
+        selectManagerLabel2 = new javax.swing.JLabel();
+        Email = new javax.swing.JLabel();
+        EmailTxt = new javax.swing.JTextField();
+        addressLabel2 = new javax.swing.JLabel();
+        updateEmailTxt = new javax.swing.JTextField();
+        selectManagerLabel3 = new javax.swing.JLabel();
+        customerListCombo1 = new javax.swing.JComboBox<>();
+
+        setBackground(new java.awt.Color(0, 108, 103));
+        setForeground(new java.awt.Color(254, 254, 226));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 108, 103));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Add a Customer");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, 193, -1));
+
+        updateRestManagerLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        updateRestManagerLabel.setForeground(new java.awt.Color(254, 254, 226));
+        updateRestManagerLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        updateRestManagerLabel.setText("Name");
+        add(updateRestManagerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 103, -1));
+
+        restPwdLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        restPwdLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        restPwdLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        restPwdLabel1.setText("Username");
+        add(restPwdLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 103, -1));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel6.setText("Password");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 103, -1));
+
+        phoneLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        phoneLabel.setForeground(new java.awt.Color(254, 254, 226));
+        phoneLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        phoneLabel.setText("Phone");
+        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 103, -1));
+
+        addressLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        addressLabel.setForeground(new java.awt.Color(254, 254, 226));
+        addressLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addressLabel.setText("Address");
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 103, -1));
+
+        AddressText.setForeground(new java.awt.Color(72, 72, 72));
+        add(AddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 280, 145, -1));
+
+        phoneText.setForeground(new java.awt.Color(72, 72, 72));
+        add(phoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 145, -1));
+
+        restPwdText.setForeground(new java.awt.Color(72, 72, 72));
+        add(restPwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 145, -1));
+
+        usernameText.setForeground(new java.awt.Color(72, 72, 72));
+        add(usernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, 145, -1));
+
+        nameText.setForeground(new java.awt.Color(72, 72, 72));
+        nameText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameTextActionPerformed(evt);
+            }
+        });
+        add(nameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, 145, -1));
+
+        viewLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        viewLabel.setForeground(new java.awt.Color(0, 108, 103));
+        viewLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewLabel.setText("View Customers");
+        add(viewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 207, -1));
+
+        customerListTable.setBackground(new java.awt.Color(254, 254, 226));
+        customerListTable.setForeground(new java.awt.Color(254, 254, 226));
+        customerListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Address", "Phone"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        customerListTable.setToolTipText("");
+        customerListTable.setGridColor(new java.awt.Color(254, 254, 226));
+        customerListTable.setSelectionBackground(new java.awt.Color(254, 254, 226));
+        customerListTable.setSelectionForeground(new java.awt.Color(255, 166, 158));
+        jScrollPane1.setViewportView(customerListTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 470, 827, 209));
+
+        AddBtn.setBackground(new java.awt.Color(127, 195, 126));
+        AddBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        AddBtn.setForeground(new java.awt.Color(51, 51, 51));
+        AddBtn.setText("Add");
+        AddBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddBtnActionPerformed(evt);
+            }
+        });
+        add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, 131, -1));
+
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 108, 103));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Update / Delete a Customer");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 130, 213, -1));
+
+        selectManagerLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        selectManagerLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        selectManagerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        selectManagerLabel1.setText("Select Customer");
+        add(selectManagerLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 170, 131, 20));
+
+        customerListCombo.setForeground(new java.awt.Color(72, 72, 72));
+        customerListCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
+        customerListCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerListComboActionPerformed(evt);
+            }
+        });
+        add(customerListCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 170, 145, -1));
+
+        updateNameText.setForeground(new java.awt.Color(72, 72, 72));
+        updateNameText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateNameTextActionPerformed(evt);
+            }
+        });
+        add(updateNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 200, 145, -1));
+
+        updateUsernameText.setForeground(new java.awt.Color(72, 72, 72));
+        updateUsernameText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateUsernameTextActionPerformed(evt);
+            }
+        });
+        add(updateUsernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 230, 145, -1));
+
+        restPwdLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        restPwdLabel2.setForeground(new java.awt.Color(254, 254, 226));
+        restPwdLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        restPwdLabel2.setText("Username");
+        add(restPwdLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 230, 131, 20));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel7.setText("Password");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 260, -1, -1));
+
+        updatePwdText.setForeground(new java.awt.Color(72, 72, 72));
+        updatePwdText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePwdTextActionPerformed(evt);
+            }
+        });
+        add(updatePwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 260, 145, -1));
+
+        updatePhoneText.setForeground(new java.awt.Color(72, 72, 72));
+        add(updatePhoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 290, 145, -1));
+
+        phoneLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        phoneLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        phoneLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        phoneLabel1.setText("Phone");
+        add(phoneLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 290, 39, 20));
+
+        addressLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        addressLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        addressLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addressLabel1.setText("Address");
+        add(addressLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 330, -1, -1));
+
+        updateAddressText.setForeground(new java.awt.Color(72, 72, 72));
+        add(updateAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 320, 145, -1));
+
+        deleteButton.setBackground(new java.awt.Color(127, 195, 126));
+        deleteButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(51, 51, 51));
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+        add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 270, 131, -1));
+
+        updateButton.setBackground(new java.awt.Color(127, 195, 126));
+        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(51, 51, 51));
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 220, 131, -1));
+
+        btnBack.setBackground(new java.awt.Color(127, 195, 126));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 131, -1));
+
+        title.setBackground(new java.awt.Color(255, 51, 0));
+        title.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(254, 254, 226));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Welcome to Food For All");
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 989, 58));
+
+        selectManagerLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        selectManagerLabel2.setForeground(new java.awt.Color(254, 254, 226));
+        selectManagerLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        selectManagerLabel2.setText("Name");
+        add(selectManagerLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 200, 60, 20));
+
+        Email.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        Email.setForeground(new java.awt.Color(254, 254, 226));
+        Email.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        Email.setText("Email");
+        add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 103, -1));
+
+        EmailTxt.setForeground(new java.awt.Color(72, 72, 72));
+        add(EmailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 145, -1));
+
+        addressLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        addressLabel2.setForeground(new java.awt.Color(254, 254, 226));
+        addressLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addressLabel2.setText("Email");
+        add(addressLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 360, 33, -1));
+
+        updateEmailTxt.setForeground(new java.awt.Color(72, 72, 72));
+        add(updateEmailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 350, 145, -1));
+
+        selectManagerLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        selectManagerLabel3.setForeground(new java.awt.Color(254, 254, 226));
+        selectManagerLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        selectManagerLabel3.setText("Network");
+        add(selectManagerLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 108, -1));
+
+        customerListCombo1.setForeground(new java.awt.Color(72, 72, 72));
+        customerListCombo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
+        customerListCombo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerListCombo1ActionPerformed(evt);
+            }
+        });
+        add(customerListCombo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 145, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTextActionPerformed
+    
+    public Boolean validateFields(String username, String address, String phone, String name, char[] pwd, String email, String netwrok) {
+        String passregex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        Pattern pattern = Pattern.compile(passregex);
+        Matcher matcher = pattern.matcher(String.valueOf(pwd));
+        if(username.isEmpty() || phone.isEmpty() || name.isEmpty() || address.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Fields cannot be empty","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (pwd.length < 8) {
+            JOptionPane.showMessageDialog(null,"Password cannot be less than 8","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if(phone.length() != 10) {
+            JOptionPane.showMessageDialog(null, "PhoneNumber must be of 10 digits","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else if(!phone.matches("^[0-9]+$")) {
+            JOptionPane.showMessageDialog(null, "Phone Number must have digits only","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else if(!email.matches("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")){
+             JOptionPane.showMessageDialog(null, "Email is invalid","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else if(!matcher.matches()){
+            JOptionPane.showMessageDialog(null, "Enter valid password with atleast on number, one lowercase letter, one uppercase letter,one special char and atleast 8 digits");
+            return false;
+        }
+        else if(netwrok == "None"){
+            JOptionPane.showMessageDialog(null, "Netwrok cannot be None");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
+        // TODO add your handling code here:
+        Boolean isValid = validateFields(usernameText.getText(), AddressText.getText(), phoneText.getText(), nameText.getText(), restPwdText.getPassword(), EmailTxt.getText(),(String) customerListCombo1.getSelectedItem());
+        if (!isValid) {
+            return;
+        }
+        for (int i = 0; i < customerList.size(); i++) {
+            if(/*"customerAdmin".equals(customerList.get(i).getAccountDetails().getRoleName()) &&*/ customerList.get(i).getAccountDetails().getUsername().equals(usernameText.getText())){
+                JOptionPane.showMessageDialog(null,"Username Already Present", "Error message" ,JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+        }
+        char[] ch = restPwdText.getPassword();
+        String pwd = new String(ch);
+        String name = (String) customerListCombo1.getSelectedItem();
+        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(nameText.getText());
+        UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(usernameText.getText(), pwd, employee, new CustomerRole(), "customerAdmin");
+        Customer cust = ecosystem.getCustomerDirectory().createCustomer(nameText.getText(), ua, phoneText.getText(), AddressText.getText(), EmailTxt.getText(), name);
+        customerList.add(cust);
+        JOptionPane.showMessageDialog(this, "Customer added successfully");
+        System.out.println("Customer Added ...");
+        customerListCombo.addItem(nameText.getText());
+        model.addRow(new Object[]{
+            nameText.getText(),
+            AddressText.getText(),
+            phoneText.getText(),
+            EmailTxt.getText(),
+            name
+        });
+        nameText.setText("");
+        usernameText.setText("");
+        restPwdText.setText("");
+        phoneText.setText("");
+        AddressText.setText("");
+        EmailTxt.setText("");
+    }//GEN-LAST:event_AddBtnActionPerformed
+
+    private void customerListComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerListComboActionPerformed
+        // TODO add your handling code here:
+        if (customerListCombo.getSelectedItem() != "None") {
+            String selectedItem = (String) customerListCombo.getSelectedItem();
+            for (int i = 0; i < customerList.size(); i++) {
+                char[] ch = updatePwdText.getPassword();
+                String pwd = new String(ch);
+                if (customerList.get(i).getName().equalsIgnoreCase(selectedItem)) {
+                    updateUsernameText.setText(customerList.get(i).getAccountDetails().getUsername());
+                    updatePwdText.setText(customerList.get(i).getAccountDetails().getPassword());
+                    updatePhoneText.setText(customerList.get(i).getPhone());
+                    updateNameText.setText(customerList.get(i).getName());
+                    updateAddressText.setText(customerList.get(i).getAddress());
+                    updateEmailTxt.setText(customerList.get(i).getEmail());
+                    
+                }
+            }
+        }else{
+            updateUsernameText.setText("");
+            updatePwdText.setText("");
+            updatePhoneText.setText("");
+            updateNameText.setText("");
+            updateAddressText.setText("");
+            updateEmailTxt.setText("");
+        }
+    }//GEN-LAST:event_customerListComboActionPerformed
+
+    private void updateNameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateNameTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateNameTextActionPerformed
+
+    private void updatePwdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePwdTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updatePwdTextActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        boolean flag = false;
+        
+        String selectedItem = (String) customerListCombo.getSelectedItem();
+        customerListCombo.getSelectedIndex();
+        if(customerListCombo.getSelectedItem() == null || customerListCombo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,"Select a value from dropdown","Error message", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!validateFields(updateUsernameText.getText(), updateAddressText.getText(), updatePhoneText.getText(), updateNameText.getText(), updatePwdText.getPassword(), updateEmailTxt.getText(), "no")) {
+            return;
+        }
+        if (flag == false) {
+            Boolean isDeleteUser = ecosystem.getUserAccountDirectory().deleteUser(selectedItem);
+            ecosystem.getCustomerDirectory().deleteCustomer(selectedItem);
+            
+            for (int i = 0; i < customerListTable.getRowCount(); i++) {
+                if (((String) customerListTable.getValueAt(i, 0)).equals(selectedItem)) {
+                    model.removeRow(i);
+                    customerListCombo.removeItemAt(i + 1);
+                    updateNameText.setText("");
+                    updateUsernameText.setText("");
+                    updatePwdText.setText("");
+                    updatePhoneText.setText("");
+                    updateAddressText.setText("");
+                    updateEmailTxt.setText("");
+                }//end of if block
+            }
+            if (isDeleteUser) {
+                System.out.println("Customer Deleted ...");
+                JOptionPane.showMessageDialog(this, "Customer deleted successfully");
+            }
+        }
+        reset();
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        if(customerListCombo.getSelectedItem() == null || customerListCombo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,"Select a value from dropdown","Error message", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!validateFields(updateUsernameText.getText(), updateAddressText.getText(), updatePhoneText.getText(), updateNameText.getText(), updatePwdText.getPassword(), updateEmailTxt.getText(), "no")) {
+            return;
+        }
+        String networks = "";
+        if (customerListCombo.getSelectedItem() != null) {
+            String selectedItem = (String) customerListCombo.getSelectedItem();
+            for (int i = 0; i < customerList.size(); i++) {
+                char[] ch = updatePwdText.getPassword();
+                String pwd = new String(ch);
+                if (customerList.get(i).getName().equalsIgnoreCase(selectedItem)) {
+                    customerList.get(i).setAddress(updateAddressText.getText());
+                    customerList.get(i).setPhone(updatePhoneText.getText());
+                    customerList.get(i).getAccountDetails().setPassword(pwd);
+                    customerList.get(i).setName(updateNameText.getText());
+                    customerList.get(i).getAccountDetails().setUsername(updateUsernameText.getText());
+                    customerList.get(i).setEmail(updateEmailTxt.getText());
+                    System.out.println("Customer Updated ...");
+                    networks = customerList.get(i).getNetwork();
+                    JOptionPane.showMessageDialog(this, "Customer updated successfully");
+                }
+            }
+        }
+        String selectedItem = (String) customerListCombo.getSelectedItem();
+        customerListCombo.getSelectedIndex();
+        for (int i = 0; i < customerListTable.getRowCount(); i++) {
+            if (((String) customerListTable.getValueAt(i, 0)).equals(selectedItem)) {
+                customerListCombo.addItem(updateNameText.getText());
+                model.addRow(new Object[]{
+                    updateNameText.getText(),
+                    updateAddressText.getText(),
+                    updatePhoneText.getText(),
+                    updateEmailTxt.getText(),
+                    networks
+                });
+                model.removeRow(i);
+                customerListCombo.removeItemAt(i + 1);
+                
+            }//end of if block
+        }
+        reset();
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        SystemAdminWorkAreaJPanel dm= new SystemAdminWorkAreaJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("manageNetworkJPanel",dm);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void updateUsernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateUsernameTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateUsernameTextActionPerformed
+
+    private void customerListCombo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerListCombo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customerListCombo1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddBtn;
+    private javax.swing.JTextField AddressText;
+    private javax.swing.JLabel Email;
+    private javax.swing.JTextField EmailTxt;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel addressLabel1;
+    private javax.swing.JLabel addressLabel2;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JComboBox<String> customerListCombo;
+    private javax.swing.JComboBox<String> customerListCombo1;
+    private javax.swing.JTable customerListTable;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField nameText;
+    private javax.swing.JLabel phoneLabel;
+    private javax.swing.JLabel phoneLabel1;
+    private javax.swing.JTextField phoneText;
+    private javax.swing.JLabel restPwdLabel1;
+    private javax.swing.JLabel restPwdLabel2;
+    private javax.swing.JPasswordField restPwdText;
+    private javax.swing.JLabel selectManagerLabel1;
+    private javax.swing.JLabel selectManagerLabel2;
+    private javax.swing.JLabel selectManagerLabel3;
+    private javax.swing.JLabel title;
+    private javax.swing.JTextField updateAddressText;
+    private javax.swing.JButton updateButton;
+    private javax.swing.JTextField updateEmailTxt;
+    private javax.swing.JTextField updateNameText;
+    private javax.swing.JTextField updatePhoneText;
+    private javax.swing.JPasswordField updatePwdText;
+    private javax.swing.JLabel updateRestManagerLabel;
+    private javax.swing.JTextField updateUsernameText;
+    private javax.swing.JTextField usernameText;
+    private javax.swing.JLabel viewLabel;
     // End of variables declaration//GEN-END:variables
 }
