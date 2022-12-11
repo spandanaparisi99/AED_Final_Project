@@ -128,8 +128,6 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         managerListTable = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
-        addressLabel2 = new javax.swing.JLabel();
-        gendercCombobox = new javax.swing.JComboBox<>();
         selectManagerLabel3 = new javax.swing.JLabel();
         netwrokCombo = new javax.swing.JComboBox<>();
         title = new javax.swing.JLabel();
@@ -138,17 +136,17 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
         setForeground(new java.awt.Color(72, 72, 72));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 226));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Add Farm Manager");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 231, -1));
+        jLabel5.setText("Add Farm");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 231, -1));
 
         updateRestManagerLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         updateRestManagerLabel.setForeground(new java.awt.Color(254, 254, 226));
         updateRestManagerLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         updateRestManagerLabel.setText("Name");
-        add(updateRestManagerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 54, -1));
+        add(updateRestManagerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 54, -1));
 
         restManagerText.setForeground(new java.awt.Color(72, 72, 72));
         restManagerText.addActionListener(new java.awt.event.ActionListener() {
@@ -156,28 +154,28 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 restManagerTextActionPerformed(evt);
             }
         });
-        add(restManagerText, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 145, -1));
+        add(restManagerText, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 145, -1));
 
         restPwdLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         restPwdLabel1.setForeground(new java.awt.Color(254, 254, 226));
         restPwdLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         restPwdLabel1.setText("Username");
-        add(restPwdLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 86, -1));
+        add(restPwdLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 86, -1));
 
         usernameText.setForeground(new java.awt.Color(72, 72, 72));
-        add(usernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 145, -1));
+        add(usernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 145, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 226));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("Password");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 63, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 63, -1));
 
         restPwdText.setForeground(new java.awt.Color(72, 72, 72));
-        add(restPwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 145, -1));
+        add(restPwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 145, -1));
 
         updateUsernameText.setForeground(new java.awt.Color(72, 72, 72));
-        add(updateUsernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, 153, -1));
+        add(updateUsernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 260, 153, -1));
 
         updateRestManagerText.setForeground(new java.awt.Color(72, 72, 72));
         updateRestManagerText.addActionListener(new java.awt.event.ActionListener() {
@@ -185,19 +183,19 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 updateRestManagerTextActionPerformed(evt);
             }
         });
-        add(updateRestManagerText, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 250, 153, -1));
+        add(updateRestManagerText, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 220, 153, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 226));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel7.setText("Password");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 310, 136, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 300, 136, -1));
 
         updateRestManagerLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         updateRestManagerLabel1.setForeground(new java.awt.Color(254, 254, 226));
         updateRestManagerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         updateRestManagerLabel1.setText("Name");
-        add(updateRestManagerLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 250, 136, -1));
+        add(updateRestManagerLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 136, -1));
 
         updateRestPwdText.setForeground(new java.awt.Color(72, 72, 72));
         updateRestPwdText.addActionListener(new java.awt.event.ActionListener() {
@@ -205,19 +203,19 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 updateRestPwdTextActionPerformed(evt);
             }
         });
-        add(updateRestPwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 310, 153, -1));
+        add(updateRestPwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 300, 153, -1));
 
         selectManagerLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         selectManagerLabel1.setForeground(new java.awt.Color(254, 254, 226));
         selectManagerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        selectManagerLabel1.setText("Select Manager");
-        add(selectManagerLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 136, -1));
+        selectManagerLabel1.setText("Select Farm");
+        add(selectManagerLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 136, -1));
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 226));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Update / Delete a Farm Manager");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, 303, -1));
+        jLabel8.setText("Update / Delete a Farm");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 130, 303, -1));
 
         managerListCombo.setForeground(new java.awt.Color(72, 72, 72));
         managerListCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
@@ -226,13 +224,13 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 managerListComboActionPerformed(evt);
             }
         });
-        add(managerListCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 220, 153, -1));
+        add(managerListCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 180, 153, -1));
 
         restPwdLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         restPwdLabel2.setForeground(new java.awt.Color(254, 254, 226));
         restPwdLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         restPwdLabel2.setText("Username");
-        add(restPwdLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 136, -1));
+        add(restPwdLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, 136, -1));
 
         addManagerButton.setBackground(new java.awt.Color(127, 195, 126));
         addManagerButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -243,7 +241,7 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 addManagerButtonActionPerformed(evt);
             }
         });
-        add(addManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 111, 45));
+        add(addManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 111, 45));
 
         updateButton.setBackground(new java.awt.Color(127, 195, 126));
         updateButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -254,7 +252,7 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 updateButtonActionPerformed(evt);
             }
         });
-        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 230, 111, 40));
+        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 210, 111, 40));
 
         deleteManagerButton.setBackground(new java.awt.Color(127, 195, 126));
         deleteManagerButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -265,7 +263,7 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 deleteManagerButtonActionPerformed(evt);
             }
         });
-        add(deleteManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 310, 111, 40));
+        add(deleteManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 300, 111, 40));
 
         phoneLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         phoneLabel.setForeground(new java.awt.Color(254, 254, 226));
@@ -292,22 +290,22 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
         add(phoneLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 340, 47, -1));
 
         updatePhoneText.setForeground(new java.awt.Color(72, 72, 72));
-        add(updatePhoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 340, 153, -1));
+        add(updatePhoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 340, 153, -1));
 
         addressLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         addressLabel1.setForeground(new java.awt.Color(254, 254, 226));
         addressLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         addressLabel1.setText("Address");
-        add(addressLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 370, 136, -1));
+        add(addressLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 380, 90, -1));
 
         updateAddressText.setForeground(new java.awt.Color(72, 72, 72));
-        add(updateAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 370, 153, -1));
+        add(updateAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 380, 153, -1));
 
-        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(254, 254, 226));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("View Farm Managers");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, 269, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 269, -1));
 
         managerListTable.setBackground(new java.awt.Color(254, 254, 226));
         managerListTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -338,7 +336,7 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(managerListTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 560, 413, 151));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 500, 413, 151));
 
         btnBack.setBackground(new java.awt.Color(127, 195, 126));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -349,22 +347,13 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 42, 111, -1));
-
-        addressLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        addressLabel2.setForeground(new java.awt.Color(254, 254, 226));
-        addressLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        addressLabel2.setText("Gender");
-        add(addressLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 80, -1));
-
-        gendercCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "N/A" }));
-        add(gendercCombobox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 111, -1));
 
         selectManagerLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         selectManagerLabel3.setForeground(new java.awt.Color(254, 254, 226));
         selectManagerLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         selectManagerLabel3.setText("Select Network");
-        add(selectManagerLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, -1, -1));
+        add(selectManagerLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
 
         netwrokCombo.setForeground(new java.awt.Color(72, 72, 72));
         netwrokCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
@@ -373,14 +362,14 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
                 netwrokComboActionPerformed(evt);
             }
         });
-        add(netwrokCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 145, -1));
+        add(netwrokCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 145, -1));
 
         title.setBackground(new java.awt.Color(255, 51, 0));
         title.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         title.setForeground(new java.awt.Color(254, 254, 226));
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        title.setText("Manage Farm Manager");
-        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 989, 58));
+        title.setText("Manage Farms");
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 50, 989, 58));
     }// </editor-fold>//GEN-END:initComponents
     
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
@@ -503,7 +492,7 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
         String netwrokname = (String) netwrokCombo.getSelectedItem();
         Employee employee = ecosystem.getEmployeeDirectory().createEmployee(restManagerText.getText());
         UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(usernameText.getText(), pwd, employee, new FarmRole(), "FarmAdmin");
-        FarmManager rest = ecosystem.getFarmManagerDirectory().createFarmManager(restManagerText.getText(), ua, phoneText.getText(), (String) gendercCombobox.getSelectedItem(), AddressText.getText(), netwrokname);
+        FarmManager rest = ecosystem.getFarmManagerDirectory().createFarmManager(restManagerText.getText(), ua, phoneText.getText(), AddressText.getText(), netwrokname);
         managersList.add(rest);
         JOptionPane.showMessageDialog(this, "Farm manager added successfully");
         managerListCombo.addItem(restManagerText.getText());
@@ -575,10 +564,8 @@ public class ManagerFarmManagers extends javax.swing.JPanel {
     private javax.swing.JButton addManagerButton;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JLabel addressLabel1;
-    private javax.swing.JLabel addressLabel2;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton deleteManagerButton;
-    private javax.swing.JComboBox<String> gendercCombobox;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
