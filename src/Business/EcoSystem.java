@@ -34,7 +34,7 @@ import java.util.ArrayList;
  *
  * @author raaga
  */
-public class EcoSystem {
+public class EcoSystem extends Organization {
     
      private static EcoSystem business;
     
