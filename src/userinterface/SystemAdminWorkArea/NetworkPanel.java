@@ -4,6 +4,11 @@
  */
 package userinterface.SystemAdminWorkArea;
 
+import Business.EcoSystem;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author raaga
@@ -13,7 +18,11 @@ public class NetworkPanel extends javax.swing.JPanel {
     /**
      * Creates new form NetworkPanel
      */
-    public NetworkPanel() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    public NetworkPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
         initComponents();
     }
 
@@ -26,19 +35,127 @@ public class NetworkPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel6 = new javax.swing.JPanel();
+        ManageCustomerButton3 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        ManageCustomerButton4 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(0, 108, 103));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(254, 254, 226));
+
+        ManageCustomerButton3.setBackground(new java.awt.Color(127, 195, 126));
+        ManageCustomerButton3.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        ManageCustomerButton3.setForeground(new java.awt.Color(51, 51, 51));
+        ManageCustomerButton3.setText("Add Network");
+        ManageCustomerButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageCustomerButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/netwrok.gif"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ManageCustomerButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(ManageCustomerButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
+
+        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, 280));
+
+        jPanel7.setBackground(new java.awt.Color(254, 254, 226));
+
+        ManageCustomerButton4.setBackground(new java.awt.Color(127, 195, 126));
+        ManageCustomerButton4.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        ManageCustomerButton4.setForeground(new java.awt.Color(51, 51, 51));
+        ManageCustomerButton4.setText("Add Enterprise");
+        ManageCustomerButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageCustomerButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enterprise-gif.gif"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ManageCustomerButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(ManageCustomerButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
+        );
+
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 180, -1, -1));
+
+        title.setBackground(new java.awt.Color(255, 51, 0));
+        title.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(254, 254, 226));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("System Admin Home Page");
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 989, 58));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ManageCustomerButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCustomerButton3ActionPerformed
+        ManageNetwork dm= new ManageNetwork(userProcessContainer, ecosystem);
+        userProcessContainer.add("manageNetworkJPanel",dm);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_ManageCustomerButton3ActionPerformed
+
+    private void ManageCustomerButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCustomerButton4ActionPerformed
+        // TODO add your handling code here:
+        if(ecosystem.getcreateNetwork().getNetwork().size() > 0 ) {
+            SystemAdminWorkAreaJPanel dm= new SystemAdminWorkAreaJPanel(userProcessContainer, ecosystem);
+        userProcessContainer.add("manageNetworkJPanel",dm);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        }else{
+            JOptionPane.showMessageDialog(this, "Kindly Add A Network");
+        }
+        
+    }//GEN-LAST:event_ManageCustomerButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ManageCustomerButton3;
+    private javax.swing.JButton ManageCustomerButton4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

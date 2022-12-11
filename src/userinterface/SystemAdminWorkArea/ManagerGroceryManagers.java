@@ -1,8 +1,23 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package userinterface.SystemAdminWorkArea;
+
+import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.GroceryManager.GroceryManager;
+import Business.Role.GroceryRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -10,13 +25,67 @@ package userinterface.SystemAdminWorkArea;
  */
 public class ManagerGroceryManagers extends javax.swing.JPanel {
 
+    JPanel userProcessContainer;
+    private static EcoSystem ecosystem;
+//    private ArrayList<UserAccount> userAccounts = new ArrayList<UserAccount>();    
+    private ArrayList<GroceryManager> managersList = new ArrayList<GroceryManager>();
+
+    DefaultTableModel model;
+
     /**
-     * Creates new form ManagerGroceryManagers
+     * Creates new form ManagerRestManagers
      */
-    public ManagerGroceryManagers() {
+    public ManagerGroceryManagers(JPanel userProcessContainer1, EcoSystem system) {
         initComponents();
+        userProcessContainer = userProcessContainer1;
+        ecosystem = system;
+        System.out.println(ecosystem);
+        System.out.println(system);
+        for (int i = 0; i < system.getGroceryManagerDirectory().getGroceryManagerList().size(); i++) {
+            managersList.add(system.getGroceryManagerDirectory().getGroceryManagerList().get(i));
+        }
+        
+        for (int i = 0; i < ecosystem.getcreateNetwork().getNetwork().size(); i++) {
+            Netwrokcombo.addItem(ecosystem.getcreateNetwork().getNetwork().get(i));
+        }
+        model = new DefaultTableModel();
+        managerListTable.setModel(model);
+        model.addColumn("Name");
+        model.addColumn("Address");
+        model.addColumn("Phone");
+        model.addColumn("Network");
+        viewGroceryManagerList();
+        showUpdateList();
     }
 
+    public void viewGroceryManagerList() {
+        if (managersList.size() > 0) {
+            for (int i = 0; i < managersList.size(); i++) {
+                model.addRow(new Object[]{
+                    managersList.get(i).getName(),
+                    managersList.get(i).getAddress(),                    
+                    managersList.get(i).getPhone(),
+                    managersList.get(i).getNetwork()
+                });
+            }
+        }
+    }
+
+    public void showUpdateList() {
+        for (int i = 0; i < managersList.size(); i++) {
+            managerListCombo.addItem(managersList.get(i).getName());
+        }
+    }
+    
+    public void reset() {
+        managerListCombo.setSelectedIndex(0);
+        updateRestManagerText.setText("");
+        updateUsernameText.setText("");
+        updateRestPwdText.setText("");
+        updatePhoneText.setText("");
+        updateAddressText.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,19 +95,500 @@ public class ManagerGroceryManagers extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jLabel5 = new javax.swing.JLabel();
+        updateRestManagerLabel = new javax.swing.JLabel();
+        restManagerText = new javax.swing.JTextField();
+        restPwdLabel1 = new javax.swing.JLabel();
+        usernameText = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        restPwdText = new javax.swing.JPasswordField();
+        updateUsernameText = new javax.swing.JTextField();
+        updateRestManagerText = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        updateRestManagerLabel1 = new javax.swing.JLabel();
+        updateRestPwdText = new javax.swing.JPasswordField();
+        selectManagerLabel1 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        managerListCombo = new javax.swing.JComboBox<>();
+        restPwdLabel2 = new javax.swing.JLabel();
+        addManagerButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        deleteManagerButton = new javax.swing.JButton();
+        phoneLabel = new javax.swing.JLabel();
+        phoneText = new javax.swing.JTextField();
+        addressLabel = new javax.swing.JLabel();
+        AddressText = new javax.swing.JTextField();
+        phoneLabel1 = new javax.swing.JLabel();
+        updatePhoneText = new javax.swing.JTextField();
+        addressLabel1 = new javax.swing.JLabel();
+        updateAddressText = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        managerListTable = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
+        addressLabel2 = new javax.swing.JLabel();
+        Netwrokcombo = new javax.swing.JComboBox<>();
+        title = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(0, 108, 103));
+        setForeground(new java.awt.Color(254, 254, 226));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Add Grocery Manager");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, 215, -1));
+
+        updateRestManagerLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        updateRestManagerLabel.setForeground(new java.awt.Color(254, 254, 226));
+        updateRestManagerLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        updateRestManagerLabel.setText("Name");
+        add(updateRestManagerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 64, -1));
+
+        restManagerText.setForeground(new java.awt.Color(72, 72, 72));
+        restManagerText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restManagerTextActionPerformed(evt);
+            }
+        });
+        add(restManagerText, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 145, -1));
+
+        restPwdLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        restPwdLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        restPwdLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        restPwdLabel1.setText("Username");
+        add(restPwdLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 64, -1));
+
+        usernameText.setForeground(new java.awt.Color(72, 72, 72));
+        add(usernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 145, -1));
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel6.setText("Password");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 64, -1));
+
+        restPwdText.setForeground(new java.awt.Color(72, 72, 72));
+        add(restPwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 145, -1));
+
+        updateUsernameText.setForeground(new java.awt.Color(72, 72, 72));
+        add(updateUsernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 250, 153, -1));
+
+        updateRestManagerText.setForeground(new java.awt.Color(72, 72, 72));
+        updateRestManagerText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateRestManagerTextActionPerformed(evt);
+            }
+        });
+        add(updateRestManagerText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 220, 153, -1));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel7.setText("Password");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 280, 70, -1));
+
+        updateRestManagerLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        updateRestManagerLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        updateRestManagerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        updateRestManagerLabel1.setText("Name");
+        add(updateRestManagerLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, 66, -1));
+
+        updateRestPwdText.setForeground(new java.awt.Color(72, 72, 72));
+        updateRestPwdText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateRestPwdTextActionPerformed(evt);
+            }
+        });
+        add(updateRestPwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 280, 153, -1));
+
+        selectManagerLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        selectManagerLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        selectManagerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        selectManagerLabel1.setText("Select Manager");
+        add(selectManagerLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, 119, -1));
+
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Update / Delete a Grocery Manager");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 130, 272, 41));
+
+        managerListCombo.setForeground(new java.awt.Color(72, 72, 72));
+        managerListCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
+        managerListCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                managerListComboActionPerformed(evt);
+            }
+        });
+        add(managerListCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 190, 153, -1));
+
+        restPwdLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        restPwdLabel2.setForeground(new java.awt.Color(254, 254, 226));
+        restPwdLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        restPwdLabel2.setText("Username");
+        add(restPwdLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 250, 70, -1));
+
+        addManagerButton.setBackground(new java.awt.Color(127, 195, 126));
+        addManagerButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        addManagerButton.setForeground(new java.awt.Color(51, 51, 51));
+        addManagerButton.setText("Add");
+        addManagerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addManagerButtonActionPerformed(evt);
+            }
+        });
+        add(addManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 407, 111, 40));
+
+        updateButton.setBackground(new java.awt.Color(127, 195, 126));
+        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(51, 51, 51));
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 220, 101, 44));
+
+        deleteManagerButton.setBackground(new java.awt.Color(127, 195, 126));
+        deleteManagerButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        deleteManagerButton.setForeground(new java.awt.Color(51, 51, 51));
+        deleteManagerButton.setText("Delete");
+        deleteManagerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteManagerButtonActionPerformed(evt);
+            }
+        });
+        add(deleteManagerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 300, 111, 44));
+
+        phoneLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        phoneLabel.setForeground(new java.awt.Color(254, 254, 226));
+        phoneLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        phoneLabel.setText("Phone");
+        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 42, 15));
+
+        phoneText.setForeground(new java.awt.Color(72, 72, 72));
+        add(phoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, 145, -1));
+
+        addressLabel.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        addressLabel.setForeground(new java.awt.Color(254, 254, 226));
+        addressLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addressLabel.setText("Address");
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 310, 64, -1));
+
+        AddressText.setForeground(new java.awt.Color(72, 72, 72));
+        add(AddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 145, -1));
+
+        phoneLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        phoneLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        phoneLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        phoneLabel1.setText("Phone");
+        add(phoneLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 310, 58, -1));
+
+        updatePhoneText.setForeground(new java.awt.Color(72, 72, 72));
+        add(updatePhoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 310, 153, -1));
+
+        addressLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        addressLabel1.setForeground(new java.awt.Color(254, 254, 226));
+        addressLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addressLabel1.setText("Address");
+        add(addressLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 340, 85, 13));
+
+        updateAddressText.setForeground(new java.awt.Color(72, 72, 72));
+        add(updateAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 340, 153, -1));
+
+        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(254, 254, 226));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("View Grocery Managers");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(735, 483, 252, -1));
+
+        managerListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Name", "Address", "Phone"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(managerListTable);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(629, 520, -1, 118));
+
+        btnBack.setBackground(new java.awt.Color(127, 195, 126));
+        btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(51, 51, 51));
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 53, 111, 45));
+
+        addressLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        addressLabel2.setForeground(new java.awt.Color(254, 254, 226));
+        addressLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        addressLabel2.setText("Network");
+        add(addressLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 85, 13));
+
+        Netwrokcombo.setForeground(new java.awt.Color(72, 72, 72));
+        Netwrokcombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
+        Netwrokcombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NetwrokcomboActionPerformed(evt);
+            }
+        });
+        add(Netwrokcombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 153, -1));
+
+        title.setBackground(new java.awt.Color(255, 51, 0));
+        title.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(254, 254, 226));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Manage Grocery Store Manager");
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 989, 58));
     }// </editor-fold>//GEN-END:initComponents
+    
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+//        Boolean isValid = validateFields(updateUsernameText.getText(), updateAddressText.getText(), updatePhoneText.getText(), updateRestManagerText.getText(), updateRestPwdText.getPassword());
+        if(managerListCombo.getSelectedItem() == null || managerListCombo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,"Select a value from dropdown","Error message", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!validateFields(updateUsernameText.getText(), updateAddressText.getText(), updatePhoneText.getText(), updateRestManagerText.getText(), updateRestPwdText.getPassword(),"no")) {
+            return;
+        }
+        if (managerListCombo.getSelectedItem() != null) {
+            String selectedItem = (String) managerListCombo.getSelectedItem();
+            for (int i = 0; i < managersList.size(); i++) {
+                char[] ch = updateRestPwdText.getPassword();
+                String pwd = new String(ch);
+                if (managersList.get(i).getName().equalsIgnoreCase(selectedItem)) {
+                    managersList.get(i).setAddress(updateAddressText.getText());
+                    managersList.get(i).setPhone(updatePhoneText.getText());
+                    managersList.get(i).getAccountDetails().setPassword(pwd);                    
+                    managersList.get(i).getAccountDetails().setUsername(updateUsernameText.getText());
+                    managersList.get(i).setName(updateRestManagerText.getText());
+                    JOptionPane.showMessageDialog(this, "Grocery Store Manager updated successfully");
+                }
+            }
+        }
+        String selectedItem = (String) managerListCombo.getSelectedItem();
+        managerListCombo.getSelectedIndex();
+        for (int i = 0; i < managerListTable.getRowCount(); i++) {
+            if (((String) managerListTable.getValueAt(i, 0)).equals(selectedItem)) {
+                managerListCombo.addItem(updateRestManagerText.getText());
+                model.addRow(new Object[]{
+                    updateRestManagerText.getText(),
+                    updateAddressText.getText(),
+                    updatePhoneText.getText()
+                });
+                model.removeRow(i);
+                managerListCombo.removeItemAt(i + 1);
+
+            }//end of if block
+        }
+        reset();
+    }//GEN-LAST:event_updateButtonActionPerformed
+    
+    private void deleteManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteManagerButtonActionPerformed
+        // TODO add your handling code here:
+        boolean flag = false;
+
+        String selectedItem = (String) managerListCombo.getSelectedItem();
+        managerListCombo.getSelectedIndex();
+        if(managerListCombo.getSelectedItem() == null || managerListCombo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,"Select a value from dropdown","Error message", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (!validateFields(updateUsernameText.getText(), updateAddressText.getText(), updatePhoneText.getText(), updateRestManagerText.getText(), updateRestPwdText.getPassword(),"no")) {
+            return;
+        }
+        if (flag == false) {
+             Boolean isDelete = ecosystem.getUserAccountDirectory().deleteUser(selectedItem);
+             ecosystem.getGroceryManagerDirectory().deleteGroceryManager(selectedItem);
+//            Boolean isDelete = ecosystem.getGroceryManagerDirectory().deleteGroceryManager(selectedItem, ecosystem);            
+            for (int i = 0; i < managerListTable.getRowCount(); i++) {
+                if (((String) managerListTable.getValueAt(i, 0)).equals(selectedItem)) {
+                    model.removeRow(i);
+                    managerListCombo.removeItemAt(i + 1);
+                    updateRestManagerText.setText("");
+                    updateUsernameText.setText("");
+                    updateRestPwdText.setText("");
+                    updatePhoneText.setText("");
+                    updateAddressText.setText("");
+                }//end of if block
+            }
+            if (isDelete) {
+                JOptionPane.showMessageDialog(this, "Grocery Store Manager deleted successfully");
+            }
+        }
+        reset();
+    }//GEN-LAST:event_deleteManagerButtonActionPerformed
+    public Boolean validateFields(String username, String address, String phone, String name, char[] pwd, String netwrok) {
+        String passregex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        Pattern pattern = Pattern.compile(passregex);
+        Matcher matcher = pattern.matcher(String.valueOf(pwd));
+        if(username.isEmpty() || phone.isEmpty() || name.isEmpty() || address.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"Fields cannot be empty","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if (pwd.length < 8) {
+            JOptionPane.showMessageDialog(null,"Password cannot be less than 8","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        } else if(phone.length() != 10) {
+            JOptionPane.showMessageDialog(null, "PhoneNumber must be of 10 digits","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else if(!phone.matches("^[0-9]+$")) {
+            JOptionPane.showMessageDialog(null, "Phone Number must have digits only","Error message", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }else if(!matcher.matches()){
+            JOptionPane.showMessageDialog(null, "Enter valid password with atleast on number, one lowercase letter, one uppercase letter,one special char and atleast 8 digits");
+            return false;
+        }
+        else if(netwrok == "None"){
+            JOptionPane.showMessageDialog(null, "Netwrok cannot be None");
+            return false;
+        }
+        return true;
+    }
+    
+    private void addManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addManagerButtonActionPerformed
+        // TODO add your handling code here:
+        Boolean isValid = validateFields(usernameText.getText(), AddressText.getText(), phoneText.getText(), restManagerText.getText(), restPwdText.getPassword(), (String) Netwrokcombo.getSelectedItem());
+        if (!isValid) {
+            return;
+        }
+        for (int i = 0; i < ecosystem.getUserAccountDirectory().getUserAccountList().size(); i++) {
+            if(/*"groceryAdmin".equals(ecosystem.getUserAccountDirectory().getUserAccountList().get(i).getRoleName()) &&*/ ecosystem.getUserAccountDirectory().getUserAccountList().get(i).getUsername().equals(usernameText.getText())){
+                JOptionPane.showMessageDialog(null,"Username Already Present", "Error message" ,JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+        char[] ch = restPwdText.getPassword();
+        String pwd = new String(ch);
+        String netwrokname = (String) Netwrokcombo.getSelectedItem();
+        Employee employee = ecosystem.getEmployeeDirectory().createEmployee(restManagerText.getText());
+        UserAccount ua = ecosystem.getUserAccountDirectory().createUserAccount(usernameText.getText(), pwd, employee, new GroceryRole(), "groceryAdmin");
+        GroceryManager rest = ecosystem.getGroceryManagerDirectory().createGroceryManager(restManagerText.getText(), ua, phoneText.getText(), AddressText.getText(), netwrokname);
+        managersList.add(rest);
+        JOptionPane.showMessageDialog(this, "Grocery Store Manager added successfully");
+        managerListCombo.addItem(restManagerText.getText());
+        model.addRow(new Object[]{
+            restManagerText.getText(),
+            AddressText.getText(),
+            phoneText.getText(),
+            netwrokname
+        });
+        restManagerText.setText("");
+        usernameText.setText("");
+        restPwdText.setText("");
+        phoneText.setText("");
+        AddressText.setText("");
+    }//GEN-LAST:event_addManagerButtonActionPerformed
+
+    private void updateRestManagerTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateRestManagerTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateRestManagerTextActionPerformed
+
+    private void managerListComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managerListComboActionPerformed
+        // TODO add your handling code here:
+        if (managerListCombo.getSelectedItem() != "None") {
+            String selectedItem = (String) managerListCombo.getSelectedItem();
+            for (int i = 0; i < managersList.size(); i++) {
+                char[] ch = updateRestPwdText.getPassword();
+                String pwd = new String(ch);
+                if (managersList.get(i).getName().equalsIgnoreCase(selectedItem)) {
+                    updateUsernameText.setText(managersList.get(i).getAccountDetails().getUsername());
+                    updateRestPwdText.setText(managersList.get(i).getAccountDetails().getPassword());
+                    updatePhoneText.setText(managersList.get(i).getPhone());
+                    updateRestManagerText.setText(managersList.get(i).getName());
+                    updateAddressText.setText(managersList.get(i).getAddress());
+                    break;
+                }
+            }
+        }else{
+        updateUsernameText.setText("");
+        updateRestPwdText.setText("");
+        updatePhoneText.setText("");
+        updateRestManagerText.setText("");
+        updateAddressText.setText("");
+        }
+    }//GEN-LAST:event_managerListComboActionPerformed
+
+    private void updateRestPwdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateRestPwdTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateRestPwdTextActionPerformed
+
+    private void restManagerTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restManagerTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restManagerTextActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+
+        GroceryMain dm= new GroceryMain(userProcessContainer, ecosystem);
+        userProcessContainer.add("manageNetworkJPanel",dm);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void NetwrokcomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NetwrokcomboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NetwrokcomboActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AddressText;
+    private javax.swing.JComboBox<String> Netwrokcombo;
+    private javax.swing.JButton addManagerButton;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JLabel addressLabel1;
+    private javax.swing.JLabel addressLabel2;
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton deleteManagerButton;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> managerListCombo;
+    private javax.swing.JTable managerListTable;
+    private javax.swing.JLabel phoneLabel;
+    private javax.swing.JLabel phoneLabel1;
+    private javax.swing.JTextField phoneText;
+    private javax.swing.JTextField restManagerText;
+    private javax.swing.JLabel restPwdLabel1;
+    private javax.swing.JLabel restPwdLabel2;
+    private javax.swing.JPasswordField restPwdText;
+    private javax.swing.JLabel selectManagerLabel1;
+    private javax.swing.JLabel title;
+    private javax.swing.JTextField updateAddressText;
+    private javax.swing.JButton updateButton;
+    private javax.swing.JTextField updatePhoneText;
+    private javax.swing.JLabel updateRestManagerLabel;
+    private javax.swing.JLabel updateRestManagerLabel1;
+    private javax.swing.JTextField updateRestManagerText;
+    private javax.swing.JPasswordField updateRestPwdText;
+    private javax.swing.JTextField updateUsernameText;
+    private javax.swing.JTextField usernameText;
     // End of variables declaration//GEN-END:variables
 }

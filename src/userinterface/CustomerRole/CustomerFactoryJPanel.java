@@ -1,8 +1,21 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
 package userinterface.CustomerRole;
+
+import Business.Customer.Customer;
+import Business.EcoSystem;
+
+import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JSplitPane;
 
 /**
  *
@@ -10,11 +23,99 @@ package userinterface.CustomerRole;
  */
 public class CustomerFactoryJPanel extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    DefaultTableModel model1;
+    private UserAccount userAccount;
+    DefaultTableModel model;
+    Customer cust;
+    JSplitPane screen;
+
     /**
-     * Creates new form CustomerFactoryJPanel
+     * Creates new form DoctorWorkAreaJPanel
      */
-    public CustomerFactoryJPanel() {
+    public CustomerFactoryJPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, JSplitPane screen) {
         initComponents();
+
+        this.userProcessContainer = userProcessContainer;
+        this.screen = screen;
+        this.userAccount = account;
+        ecosystem = system;
+        model = new DefaultTableModel();
+        model1 = new DefaultTableModel();
+        restListTable.setModel(model);
+        orderTable.setModel(model1);
+        cust = findCustomer();
+        model.addColumn("Name");
+        model.addColumn("Location");
+        model.addColumn("Phone No");
+        model1.addColumn("Id");
+        model1.addColumn("Status");
+        model1.addColumn("Factory");
+        model1.addColumn("Delivery");
+        model1.addColumn("FeedBack");
+        model1.addColumn("Comment");
+        populateRequestTable();
+        populateCustomerOrders();
+        
+       /* ImageIcon icon7 =  new ImageIcon("./src/images/factory.gif");
+        Image image7 = icon7.getImage().getScaledInstance(560, 240, Image.SCALE_SMOOTH);
+        jLabel1.setIcon(new ImageIcon(image7));
+        */
+        
+    }
+
+    public Customer findCustomer() {
+        for (int i = 0; i < ecosystem.getCustomerDirectory().getCustomerList().size(); i++) {
+            if (ecosystem.getCustomerDirectory().getCustomerList().get(i).getAccountDetails().getUsername().equals(this.userAccount.getUsername())) {
+                return ecosystem.getCustomerDirectory().getCustomerList().get(i);
+            }
+        }
+        return null;
+    }
+
+    public void populateCustomerCart() {
+        Customer cust = findCustomer();
+        for (int i = model1.getRowCount() - 1; i >= 0; i--) {
+            model1.removeRow(i);
+        }
+        if (cust.getFactoryOrderList().size() > 0) {
+            for (int i = 0; i < cust.getFactoryOrderList().size(); i++) {
+                model1.addRow(new Object[]{
+                    cust.getFactoryOrderList().get(i).getItem(),
+                    cust.getFactoryOrderList().get(i).getPrice(),
+                    cust.getFactoryOrderList().get(i).getQuantity(),});
+            }
+        }
+    }
+
+    public void populateCustomerOrders() {
+        for (int i = model1.getRowCount() - 1; i >= 0; i--) {
+            model1.removeRow(i);
+        }
+        for (int i = 0; i < cust.getFactoryOrderDirectoryList().size(); i++) {
+            System.out.println(cust.getFactoryOrderDirectoryList().get(i).getId());
+            model1.addRow(new Object[]{
+                i+1,
+                cust.getFactoryOrderDirectoryList().get(i).getStatus(),
+                cust.getFactoryOrderDirectoryList().get(i).getFactory().getName(),
+                cust.getFactoryOrderDirectoryList().get(i).getDeliveryMan().getName(),
+                cust.getFactoryOrderDirectoryList().get(i).getFeedbackComment(),
+                cust.getFactoryOrderDirectoryList().get(i).getComment()
+            });
+        }
+
+    }
+
+    public void populateRequestTable() {
+        for (int i = 0; i < ecosystem.getFactoryDirectory().getFactoryList().size(); i++) {
+            if( ecosystem.getFactoryDirectory().getFactoryList().get(i).getNetwork().equals(cust.getNetwork())){
+            model.addRow(new Object[]{
+                ecosystem.getFactoryDirectory().getFactoryList().get(i).getName(),
+                ecosystem.getFactoryDirectory().getFactoryList().get(i).getLocation(),
+                ecosystem.getFactoryDirectory().getFactoryList().get(i).getPhone(),});
+            }
+        }
     }
 
     /**
@@ -26,19 +127,253 @@ public class CustomerFactoryJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        restListTable = new javax.swing.JTable();
+        SelectRestBtn = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        orderTable = new javax.swing.JTable();
+        FeedbackTxt = new javax.swing.JTextField();
+        FeedbackBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        title2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(0, 108, 103));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(254, 254, 226));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        restListTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Name", "Location", "Phone No", "Title 4"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(restListTable);
+        if (restListTable.getColumnModel().getColumnCount() > 0) {
+            restListTable.getColumnModel().getColumn(0).setResizable(false);
+            restListTable.getColumnModel().getColumn(1).setResizable(false);
+            restListTable.getColumnModel().getColumn(2).setResizable(false);
+            restListTable.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        SelectRestBtn.setBackground(new java.awt.Color(127, 195, 126));
+        SelectRestBtn.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        SelectRestBtn.setText("Select Factory");
+        SelectRestBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectRestBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Select a Factory");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(83, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(179, 179, 179))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(SelectRestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(202, 202, 202))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SelectRestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 580, 250));
+
+        jPanel2.setBackground(new java.awt.Color(254, 254, 226));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        orderTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id", "Status", "Factory", "Delivery", "Comment", "FeedBack"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(orderTable);
+        if (orderTable.getColumnModel().getColumnCount() > 0) {
+            orderTable.getColumnModel().getColumn(0).setResizable(false);
+            orderTable.getColumnModel().getColumn(1).setResizable(false);
+            orderTable.getColumnModel().getColumn(2).setResizable(false);
+            orderTable.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        FeedbackTxt.setForeground(new java.awt.Color(72, 72, 72));
+        FeedbackTxt.setToolTipText("");
+
+        FeedbackBtn.setBackground(new java.awt.Color(127, 195, 126));
+        FeedbackBtn.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        FeedbackBtn.setText("Feedback");
+        FeedbackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FeedbackBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Past Orders");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 43, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(FeedbackTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(225, 225, 225)
+                .addComponent(FeedbackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(FeedbackTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(FeedbackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 580, 300));
+
+        jLabel1.setBackground(new java.awt.Color(254, 254, 226));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/factory_1.gif"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 380, 390, 270));
+
+        title2.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        title2.setForeground(new java.awt.Color(254, 254, 226));
+        title2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title2.setText("Factory Outlet Orders");
+        add(title2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 940, 60));
+
+        jLabel3.setBackground(new java.awt.Color(254, 254, 226));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/factory.gif"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, -1, 239));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SelectRestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectRestBtnActionPerformed
+
+        if (restListTable.getSelectedRow() >= 0) {
+            CustomerOrderFactoryJPanel mm = new CustomerOrderFactoryJPanel(userProcessContainer, this.userAccount, ecosystem, ecosystem.getFactoryDirectory().getFactoryList().get(restListTable.getSelectedRow()), screen);
+//            userProcessContainer.add("manageNetworkJPanel", mm);
+//            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+//            layout.next(userProcessContainer);
+               screen.setRightComponent(mm);
+        System.out.println("Factory Selected");
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a Factory","Error message", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SelectRestBtnActionPerformed
+
+    private void FeedbackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackBtnActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = orderTable.getSelectedRow();
+        if(selectedRow < 0){
+            JOptionPane.showMessageDialog(this, "Please select a order from table","Error message", JOptionPane.ERROR_MESSAGE);
+            return;
+        }else if(!"Delivered".equals(cust.getFactoryOrderDirectoryList().get(selectedRow).getStatus())){
+            JOptionPane.showMessageDialog(this, "Selected Order Not Delivered Yet","Error message", JOptionPane.ERROR_MESSAGE);
+            return;
+    }else{
+            if(FeedbackTxt.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Feedback cannot be empty","Error message", JOptionPane.ERROR_MESSAGE);
+            return;
+            }
+            cust.getFactoryOrderDirectoryList().get(selectedRow).setFeedbackComment(FeedbackTxt.getText());
+            JOptionPane.showMessageDialog(this, "Feedback added Successfully");
+            FeedbackTxt.setText("");
+            populateCustomerOrders();
+        }
+    }//GEN-LAST:event_FeedbackBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton FeedbackBtn;
+    private javax.swing.JTextField FeedbackTxt;
+    private javax.swing.JButton SelectRestBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable orderTable;
+    private javax.swing.JTable restListTable;
+    private javax.swing.JLabel title2;
     // End of variables declaration//GEN-END:variables
 }
