@@ -121,11 +121,10 @@ public class GovPlansDirectory {
         }
     }
 
-    public GovPlanOrder createOrder(String item, String price, String date, String total, String hrs, GovernmentOfficial leg, UserAccount user) {
+    public GovPlanOrder createOrder(String item, String price, String total, String hrs, GovernmentOfficial leg, UserAccount user) {
         GovPlanOrder order1 = new GovPlanOrder();
         order1.setItem(item);
         order1.setPrice(price);
-        order1.setDate(date);
         order1.setTime(hrs);
         order1.setTotal(total);
         govOfficial = leg;

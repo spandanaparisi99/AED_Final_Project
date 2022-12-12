@@ -4,10 +4,20 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
+import Business.Organization;
+import Business.UserAccount.UserAccount;
+import userinterface.GovernmentAdminRole.AdminWorkAreaJPanel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author RAJAS
  */
-public class GovOfficialRole {
+public class GovOfficialRole extends Role {
     
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+        return new AdminWorkAreaJPanel(userProcessContainer, account, business);
+    }
 }

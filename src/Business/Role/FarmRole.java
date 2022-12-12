@@ -6,11 +6,15 @@ package Business.Role;
 
 import Business.EcoSystem;
 
+import Business.Organization;
+import Business.UserAccount.UserAccount;
+import userinterface.FarmerAdminRole.AdminWorkAreaJPanel;
+import javax.swing.JPanel;
 /**
  *
  * @author RAJAS
  */
-public class FarmRole {
+public class FarmRole  extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {

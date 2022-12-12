@@ -4,10 +4,19 @@
  */
 package Business.Role;
 
+import Business.EcoSystem;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import userinterface.NGOAdminRole.AdminWorkAreaJPanel;
+
 /**
  *
  * @author RAJAS
  */
-public class NGORole {
+public class NGORole extends Role{
     
+    @Override
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
+        return new AdminWorkAreaJPanel(userProcessContainer, account, business);
+    }
 }
