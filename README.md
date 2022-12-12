@@ -14,10 +14,10 @@ The FOOD FOR ALL Application's goal is to provide a single platform for food sup
 	
 ![image](https://github.com/spandanaparisi99/AED_Final_Project/blob/master/Images/foodforall%20object%20model.jpg)  
 
-##Sequence Diagram  
+## Sequence Diagram  
 
 ![image](https://github.com/spandanaparisi99/AED_Final_Project/blob/master/Images/UML%20Sequence%20Diagram%20-%20Frame%201.jpg)  
 
-##UML Diagram  
+## UML Diagram  
 
 ![image](https://github.com/spandanaparisi99/AED_Final_Project/blob/master/Images/AED%20FINAL%20UML.jpg)  
