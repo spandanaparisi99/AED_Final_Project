@@ -91,11 +91,11 @@ public class RestaurantMain extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(248, 248, 248)
-                .addComponent(ManageGroceryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGap(173, 173, 173)
                 .addComponent(manageGroceryManagersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(ManageGroceryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(399, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

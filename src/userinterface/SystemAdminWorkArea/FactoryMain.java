@@ -92,11 +92,11 @@ public class FactoryMain extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147)
-                .addComponent(ManageGroceryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(220, 220, 220)
                 .addComponent(manageGroceryManagersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(338, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(ManageGroceryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(263, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -198,7 +198,7 @@ public class ManageCustomers extends javax.swing.JPanel {
         add(viewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 440, 207, -1));
 
         customerListTable.setBackground(new java.awt.Color(254, 254, 226));
-        customerListTable.setForeground(new java.awt.Color(254, 254, 226));
+        customerListTable.setForeground(new java.awt.Color(51, 51, 51));
         customerListTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

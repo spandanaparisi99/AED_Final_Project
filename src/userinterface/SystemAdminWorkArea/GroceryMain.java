@@ -63,7 +63,7 @@ public class GroceryMain extends javax.swing.JPanel {
                 manageGroceryManagersButtonActionPerformed(evt);
             }
         });
-        add(manageGroceryManagersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 420, 180, 46));
+        add(manageGroceryManagersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 240, 180, 46));
 
         btnBack.setBackground(new java.awt.Color(127, 195, 126));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
