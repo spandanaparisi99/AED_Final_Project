@@ -77,6 +77,7 @@ public class CustomerAddCardDetailsPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 108, 103));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -215,12 +216,16 @@ public class CustomerAddCardDetailsPanel extends javax.swing.JPanel {
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 610, 600, 90));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("YY");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, -1, -1));
+        jLabel8.setText("Enter 16 digits");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 360, 90, 20));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("MM ");
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 470, -1, -1));
+
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("YYYY");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 470, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void CreditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditActionPerformed
@@ -295,6 +300,7 @@ public class CustomerAddCardDetailsPanel extends javax.swing.JPanel {
     private javax.swing.JTextField MonthTxt;
     private javax.swing.JTextField YearTxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

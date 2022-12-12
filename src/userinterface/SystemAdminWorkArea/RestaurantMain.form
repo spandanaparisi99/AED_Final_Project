@@ -41,11 +41,11 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               <Component id="btnBack" min="-2" pref="38" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="248" max="-2" attributes="0"/>
-              <Component id="ManageGroceryButton" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
               <Component id="manageGroceryManagersButton" min="-2" pref="39" max="-2" attributes="0"/>
-              <EmptySpace pref="317" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="ManageGroceryButton" min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace pref="399" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

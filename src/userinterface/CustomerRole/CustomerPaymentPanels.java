@@ -111,7 +111,7 @@ public class CustomerPaymentPanels extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, "Payment Done, We have Sent you your Reciept");
         CustomerStaticRight adminPanel = new CustomerStaticRight();
         screen.setRightComponent(adminPanel);
-        SendMail sm = new SendMail(cust.getEmail(),"Order Confirmation","Your Order has been Confirmed with Us. \n Your oder of" + Total + " is in our bank accounts");
+        SendMail sm = new SendMail(cust.getEmail(),"Order Confirmation","Your Order has been Confirmed with Us. \n Your order of" + Total + " is in our bank accounts");
     }//GEN-LAST:event_FeedbackBtnActionPerformed
 
 
