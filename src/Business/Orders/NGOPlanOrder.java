@@ -11,7 +11,6 @@ package Business.Orders;
 public class NGOPlanOrder {
     private String item;
     private String price;
-    private String date;
 
     public String getItem() {
         return item;
@@ -27,13 +26,5 @@ public class NGOPlanOrder {
 
     public void setPrice(String price) {
         this.price = price;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 }

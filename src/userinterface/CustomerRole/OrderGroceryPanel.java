@@ -57,14 +57,7 @@ public class OrderGroceryPanel extends javax.swing.JPanel {
         populateRequestTable();
         populateCustomerOrders();
         
-        ImageIcon icon6 =  new ImageIcon("./src/images/Standalone_birdie.png");
-        Image image6 = icon6.getImage().getScaledInstance(210, 190, Image.SCALE_SMOOTH);
-        jLabel1.setIcon(new ImageIcon(image6));
-        
-        ImageIcon icon7 =  new ImageIcon("./src/images/customer_panel_grocery.png");
-        Image image7 = icon7.getImage().getScaledInstance(394, 350, Image.SCALE_SMOOTH);
-        jLabel4.setIcon(new ImageIcon(image7));
-        
+            
         
 
     }
@@ -92,6 +85,7 @@ public class OrderGroceryPanel extends javax.swing.JPanel {
         cartTable = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        Titlelabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 108, 103));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -173,7 +167,7 @@ public class OrderGroceryPanel extends javax.swing.JPanel {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 35, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(254, 254, 226));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -243,11 +237,20 @@ public class OrderGroceryPanel extends javax.swing.JPanel {
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 35, -1, 305));
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 440, 340));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, -1, 305));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grocery_1.gif"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 400, 220));
 
         jLabel1.setBackground(new java.awt.Color(0, 108, 103));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, 210, 191));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grocery_2.gif"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, 300, 160));
+
+        Titlelabel.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        Titlelabel.setForeground(new java.awt.Color(254, 254, 226));
+        Titlelabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Titlelabel.setText("Welcome");
+        add(Titlelabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 516, 38));
     }// </editor-fold>//GEN-END:initComponents
 
     private void showMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showMenuButtonActionPerformed
@@ -319,6 +322,7 @@ public class OrderGroceryPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Titlelabel;
     private javax.swing.JTable cartTable;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel jLabel1;

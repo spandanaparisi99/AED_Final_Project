@@ -110,11 +110,10 @@ public class NGOPlansDirectory {
         }
     }
 
-    public NGOPlanOrder createOrder(String item, String price, String date, NGO leg, UserAccount user) {
+    public NGOPlanOrder createOrder(String item, String price, NGO leg, UserAccount user) {
         NGOPlanOrder order1 = new NGOPlanOrder();
         order1.setItem(item);
         order1.setPrice(price);
-        order1.setDate(date);
         ngo = leg;
         customerDetails = user;
         orderList.add(order1);
