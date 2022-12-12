@@ -30,20 +30,20 @@ import Business.UserAccount.UserAccount;
 public class ManageFarmServicesPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    FarmManager maidmanager;
+    FarmManager farmManager;
     DefaultTableModel model;
     UserAccount ua;
 
-    public ManageFarmServicesPanel(JPanel userProcessContainer, EcoSystem system, FarmManager maidmanager,UserAccount ua) {
+    public ManageFarmServicesPanel(JPanel userProcessContainer, EcoSystem system, FarmManager farmManager,UserAccount ua) {
         initComponents();
         this.ecosystem = system;
-        this.maidmanager = maidmanager;
+        this.farmManager = farmManager;
         model = new DefaultTableModel();
         this.userProcessContainer = userProcessContainer;
         ManageServiceTabel.setModel(model);
-        model.addColumn("Service Name");
-        model.addColumn("Service Price");
-        System.out.println(maidmanager.getName());
+        model.addColumn("Item");
+        model.addColumn("Price");
+        System.out.println(farmManager.getName());
         
 
         viewMenuList();
@@ -52,7 +52,7 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
     }
     
       public void viewMenuList() {
-        HashMap<String, String> menu = maidmanager.getMenu();
+        HashMap<String, String> menu = farmManager.getMenu();
         
         if (menu.size() > 0) {
             for (Map.Entry<String, String> e : menu.entrySet()) {
@@ -62,8 +62,8 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
                 });}}}
 
         public void showDeleteList() {
-        HashMap<String, String> menu = maidmanager.getMenu();
-        if (maidmanager.getMenu().size() > 0) {
+        HashMap<String, String> menu = farmManager.getMenu();
+        if (farmManager.getMenu().size() > 0) {
             for (Map.Entry<String, String> e : menu.entrySet()) {
                 itemsCombo.addItem(e.getKey());
             }
@@ -96,7 +96,6 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ManageServiceTabel = new javax.swing.JTable();
         BackButton = new javax.swing.JButton();
@@ -117,13 +116,10 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
         updatePriceText = new javax.swing.JTextField();
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        title = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manage Household Services");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        setBackground(new java.awt.Color(0, 108, 103));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ManageServiceTabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         ManageServiceTabel.setModel(new javax.swing.table.DefaultTableModel(
@@ -139,34 +135,39 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(ManageServiceTabel);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, 421, 193));
+
+        BackButton.setBackground(new java.awt.Color(127, 195, 126));
+        BackButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         BackButton.setText("Back");
         BackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackButtonActionPerformed(evt);
             }
         });
+        add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 49, 145, 49));
 
-        AddItemPanel.setBackground(new java.awt.Color(240, 248, 255));
+        AddItemPanel.setBackground(new java.awt.Color(254, 254, 226));
 
         AddItemLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         AddItemLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        AddItemLabel.setText("Add Service");
+        AddItemLabel.setText("Add Inventory");
 
         priceText.setForeground(new java.awt.Color(72, 72, 72));
 
         AddItemNameLabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         AddItemNameLabel.setForeground(new java.awt.Color(72, 72, 72));
         AddItemNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        AddItemNameLabel.setText("Service");
+        AddItemNameLabel.setText("Item");
 
         AddItemPriceLabel.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         AddItemPriceLabel.setForeground(new java.awt.Color(72, 72, 72));
         AddItemPriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         AddItemPriceLabel.setText("Price");
 
-        addButton.setBackground(new java.awt.Color(0, 0, 0));
-        addButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        addButton.setForeground(new java.awt.Color(255, 255, 255));
+        addButton.setBackground(new java.awt.Color(127, 195, 126));
+        addButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        addButton.setForeground(new java.awt.Color(51, 51, 51));
         addButton.setText("Add");
         addButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -189,27 +190,27 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
             .addGroup(AddItemPanelLayout.createSequentialGroup()
                 .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddItemPanelLayout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AddItemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(153, 153, 153)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddItemPanelLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                        .addGap(102, 102, 102)
                         .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddItemPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AddItemNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(priceText, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(itemText))))
-                .addGap(31, 31, 31))
+                            .addComponent(AddItemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(priceText)
+                                .addComponent(itemText, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         AddItemPanelLayout.setVerticalGroup(
             AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddItemPanelLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(AddItemLabel)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(AddItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddItemNameLabel)
                     .addComponent(itemText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,12 +220,14 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
                     .addComponent(priceText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
-        UpdateItemPanel.setBackground(new java.awt.Color(240, 248, 255));
+        add(AddItemPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        UpdateItemPanel.setBackground(new java.awt.Color(254, 254, 226));
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Update / Delete an Item");
 
@@ -257,9 +260,9 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
 
         updatePriceText.setForeground(new java.awt.Color(72, 72, 72));
 
-        updateButton.setBackground(new java.awt.Color(0, 0, 0));
-        updateButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        updateButton.setForeground(new java.awt.Color(255, 255, 255));
+        updateButton.setBackground(new java.awt.Color(127, 195, 126));
+        updateButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(51, 51, 51));
         updateButton.setText("Update");
         updateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -268,9 +271,9 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
             }
         });
 
-        deleteButton.setBackground(new java.awt.Color(0, 0, 0));
-        deleteButton.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
-        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
+        deleteButton.setBackground(new java.awt.Color(127, 195, 126));
+        deleteButton.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(51, 51, 51));
         deleteButton.setText("Delete");
         deleteButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -283,37 +286,35 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
         UpdateItemPanel.setLayout(UpdateItemPanelLayout);
         UpdateItemPanelLayout.setHorizontalGroup(
             UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(UpdateItemPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
+            .addGroup(UpdateItemPanelLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(UpdateItemPanelLayout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(itemsCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(UpdateItemPanelLayout.createSequentialGroup()
-                        .addGroup(UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(UpdateItemPanelLayout.createSequentialGroup()
-                                .addComponent(ItemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(updateItemText, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(UpdateItemPanelLayout.createSequentialGroup()
-                                .addComponent(PriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(updatePriceText, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 32, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(UpdateItemPanelLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(ItemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(updateItemText))
+                    .addGroup(UpdateItemPanelLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(PriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(updatePriceText, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(81, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         UpdateItemPanelLayout.setVerticalGroup(
             UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(UpdateItemPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(19, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -327,52 +328,21 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
                 .addGroup(UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PriceLabel)
                     .addComponent(updatePriceText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(UpdateItemPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddItemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(127, 127, 127)
-                        .addComponent(UpdateItemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(352, 352, 352)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(269, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(AddItemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(UpdateItemPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(114, Short.MAX_VALUE))
-        );
+        add(UpdateItemPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 210, -1, -1));
+
+        title.setBackground(new java.awt.Color(254, 254, 226));
+        title.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        title.setForeground(new java.awt.Color(254, 254, 226));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Manage Your Inventory");
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 60, 508, 42));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
@@ -392,10 +362,10 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
             return;
         }
          
-        HashMap<String, String> menu = maidmanager.getMenu();
+        HashMap<String, String> menu = farmManager.getMenu();
         
         menu.put((String) itemText.getText(), priceText.getText());
-        maidmanager.setMenu(menu);
+        farmManager.setMenu(menu);
         JOptionPane.showMessageDialog(this, "Item added successfully");
         itemsCombo.addItem((String) itemText.getText());
         System.out.println((String) itemText.getText() + " test " + priceText.getText());
@@ -410,7 +380,7 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
 
     private void itemsComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemsComboActionPerformed
      // TODO add your handling code here:
-        HashMap<String, String> menu = maidmanager.getMenu();
+        HashMap<String, String> menu = farmManager.getMenu();
         if (itemsCombo.getSelectedItem() != null) {
             String selectedItem = (String) itemsCombo.getSelectedItem();
             for (Map.Entry<String, String> e : menu.entrySet()) {
@@ -434,7 +404,7 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
         } else if (!validateFields(updateItemText.getText(), updatePriceText.getText())) {
             return;
         }
-        HashMap<String, String> menu = maidmanager.getMenu();
+        HashMap<String, String> menu = farmManager.getMenu();
         if (itemsCombo.getSelectedItem() != null) {
             String selectedItem = (String) itemsCombo.getSelectedItem();
             for (Map.Entry<String, String> e : menu.entrySet()) {
@@ -445,7 +415,7 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
                 }
             }
         }
-        maidmanager.setMenu(menu);
+        farmManager.setMenu(menu);
         String selectedItem = (String) itemsCombo.getSelectedItem();
         itemsCombo.getSelectedIndex();
         for (int i = 0; i < ManageServiceTabel.getRowCount(); i++) {
@@ -471,7 +441,7 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Select a value from dropdown");
             return;
         }
-        HashMap<String, String> menu = maidmanager.getMenu();
+        HashMap<String, String> menu = farmManager.getMenu();
         String selectedItem = (String) itemsCombo.getSelectedItem();
         itemsCombo.getSelectedIndex();
         if (itemsCombo.getSelectedItem() != null) {
@@ -492,8 +462,8 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
             }//end of if block
         }
         
-        maidmanager.setMenu(menu);
-        System.out.println(menu.size() + "jsdje " + maidmanager.getMenu().size());
+        farmManager.setMenu(menu);
+        System.out.println(menu.size() + "jsdje " + farmManager.getMenu().size());
         reset();
         // TODO add your handling code here:
 
@@ -518,11 +488,11 @@ public class ManageFarmServicesPanel extends javax.swing.JPanel {
     private javax.swing.JButton deleteButton;
     private javax.swing.JTextField itemText;
     private javax.swing.JComboBox<String> itemsCombo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField priceText;
+    private javax.swing.JLabel title;
     private javax.swing.JButton updateButton;
     private javax.swing.JTextField updateItemText;
     private javax.swing.JTextField updatePriceText;

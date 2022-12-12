@@ -121,7 +121,7 @@ public class ForgetPassword extends javax.swing.JPanel {
         int Index = -1;
           for (int i = 0; i < customerList.size(); i++){
               if(customerList.get(i).getEmail().equals(updateUsernameText.getText())){
-                  System.out.println("Hey " + customerList.get(i).getName() + "\n" +"Did you forget your password?" + "\n" +"Your Passwrod is: " + system.getCustomerDirectory().getCustomerList().get(i).getAccountDetails().getPassword() +"\n" + "If you dont want to change your password or didn't request this, please ignore and delete this message");
+                  System.out.println("Hey " + customerList.get(i).getName() + "\n" +"Did you forget your password?" + "\n" +"Your Password is: " + system.getCustomerDirectory().getCustomerList().get(i).getAccountDetails().getPassword() +"\n" + "If you dont want to change your password or didn't request this, please ignore and delete this message");
                   SendMail sendMail = new SendMail(customerList.get(i).getEmail(), "Your Password for HelpingHands","Hey " + customerList.get(i).getName() + "\n" +" Did you forget your password? Your Passwrod is: " + 
                           system.getCustomerDirectory().getCustomerList().get(i).getAccountDetails().getPassword() 
                   + "If you don't want to change your password or didn't request this, please ignore and delete this message");

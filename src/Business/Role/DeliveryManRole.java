@@ -14,7 +14,7 @@ import userinterface.DeliveryManRole.DeliveryManWorkAreaJPanel;
  *
  * @author RAJAS
  */
-public class DeliveryManRole {
+public class DeliveryManRole extends Role {
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {

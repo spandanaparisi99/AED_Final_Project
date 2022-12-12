@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  *
  * @author RAJAS
  */
-public class GovOfficialRole {
+public class GovOfficialRole extends Role {
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {

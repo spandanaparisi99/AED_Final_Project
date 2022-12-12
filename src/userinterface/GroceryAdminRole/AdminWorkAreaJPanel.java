@@ -75,12 +75,12 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         enterpriseLabel.setForeground(new java.awt.Color(254, 254, 226));
         enterpriseLabel.setText("Welcome:");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 120, 30));
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 120, 30));
 
         valueLabel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         valueLabel.setForeground(new java.awt.Color(254, 254, 226));
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 96, 330, 20));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 330, 20));
 
         updatestorepanel.setBackground(new java.awt.Color(254, 254, 226));
 

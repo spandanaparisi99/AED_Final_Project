@@ -20,7 +20,6 @@ public class FarmManager {
     private int id;
     private static int count = 1;
     private String managerName;
-    private String gender;
     private String Network;
 
     public String getNetwork() {
@@ -31,13 +30,6 @@ public class FarmManager {
         this.Network = Network;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
     private String address;
     private String phone;
     private String available;

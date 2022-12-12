@@ -36,13 +36,12 @@ public class FarmManagerDirectory {
         return false;
     }
     
-    public FarmManager createFarmManager(String name, UserAccount ua, String phone, String gender , String address, String Network){
+    public FarmManager createFarmManager(String name, UserAccount ua, String phone , String address, String Network){
         FarmManager cust = new FarmManager();
         cust.setName(name);
         cust.setAccountDetails(ua);
         cust.setAddress(address);
         cust.setPhone(phone);
-        cust.setGender(gender);
         cust.setNetwork(Network);
         FarmManagerList.add(cust);
         return cust;

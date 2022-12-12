@@ -64,14 +64,13 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
         
         ngoOrderDirectory = new NGOPlansDirectory();
         
-        model.addColumn("Service Name");
+        model.addColumn("NGO plan");
         model.addColumn("Price");
         
-        model1.addColumn("Service Name");
+        model1.addColumn("NGO plan");
         model1.addColumn("Price");
-        model1.addColumn("Date");
         
-        title.setText("Welcome to:"+ legal.getName() + " we offer best service");
+        title.setText("Welcome to:"+ ngo.getName() + " we offer best service");
         showMenuTable();
         
         ImageIcon icon7 =  new ImageIcon("./src/images/customer_panel_cart.png");
@@ -85,7 +84,7 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
     }
     
     public void showMenuTable() {
-        HashMap<String, String> menu = legal.getMenu();
+        HashMap<String, String> menu = ngo.getMenu();
         if (menu.size() > 0) {
             for (Map.Entry<String, String> e : menu.entrySet()) {
                 model.addRow(new Object[]{
@@ -96,12 +95,11 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
         }
     }
         public void showCartTable() {
-        if (legalOrderDirectory.getOrderList().size() > 0) {
-            for (int i = 0; i < legalOrderDirectory.getOrderList().size(); i++) {
+        if (ngoOrderDirectory.getOrderList().size() > 0) {
+            for (int i = 0; i < ngoOrderDirectory.getOrderList().size(); i++) {
                 model1.addRow(new Object[]{
-                    legalOrderDirectory.getOrderList().get(i).getItem(),
-                    legalOrderDirectory.getOrderList().get(i).getPrice(),
-                    legalOrderDirectory.getOrderList().get(i).getDate()
+                    ngoOrderDirectory.getOrderList().get(i).getItem(),
+                    ngoOrderDirectory.getOrderList().get(i).getPrice(),
                 });
             }
         }
@@ -129,8 +127,6 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         LegalserviceTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         AddButton = new javax.swing.JButton();
         itemText = new javax.swing.JTextField();
@@ -141,7 +137,8 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(0, 108, 103));
 
-        title.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        title.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        title.setForeground(new java.awt.Color(254, 254, 226));
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         title.setText("Welcome");
 
@@ -190,16 +187,13 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Please select a consultancy");
+        jLabel2.setText("Please select a Program");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setText("Select Date");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(72, 72, 72));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Consultation Type");
+        jLabel3.setText("Program");
         jLabel3.setAutoscrolls(true);
 
         AddButton.setBackground(new java.awt.Color(127, 195, 126));
@@ -219,20 +213,10 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel3)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(itemText, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(itemText, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,7 +227,7 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
                         .addGap(29, 29, 29)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
+                        .addGap(112, 112, 112)
                         .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -258,16 +242,14 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(itemText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(46, 46, 46)
                 .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(38, 38, 38))
         );
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel4.setBackground(new java.awt.Color(254, 254, 226));
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(254, 254, 226));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Your Quick Cart View");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -276,7 +258,7 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
 
         BookAppointment.setBackground(new java.awt.Color(127, 195, 126));
         BookAppointment.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BookAppointment.setText("Book Appointment");
+        BookAppointment.setText("Place Order");
         BookAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BookAppointmentActionPerformed(evt);
@@ -320,42 +302,44 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(Backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(299, 299, 299)
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(193, 193, 193)
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(323, 323, 323)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(225, 225, 225)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(365, Short.MAX_VALUE))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(313, 313, 313)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(197, 197, 197)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(420, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(Backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
+                        .addComponent(Backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
+                        .addGap(26, 26, 26)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(960, Short.MAX_VALUE))
+                .addContainerGap(981, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -370,27 +354,15 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         // TODO add your handling code here:
          // TODO add your handling code here:
-        if(jDateChooser1.getDate() == null || itemText.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Kindly select service and select dates");
-            jDateChooser1.setDate(null);
-            return;
-        }else if(jDateChooser1.getDate().before(new Date()))
-                {JOptionPane.showMessageDialog(this, "Kindly select date after today's date");
-                jDateChooser1.setDate(null);
-                return;}
-         Date date = jDateChooser1.getDate();
-         SimpleDateFormat format1 = new SimpleDateFormat("MM-dd-yyyy");
-         String date1 = format1.format(date);
-         System.out.println(date1);
+       
         
-        legalOrderDirectory.createOrder(selectedItem, selectedPrice, date1, legal, userAccount);
+        ngoOrderDirectory.createOrder(selectedItem, selectedPrice, ngo, userAccount);
         model1.addRow(new Object[]{
             selectedItem,
             selectedPrice,
-            date1
         });
         itemText.setText("");
-        jDateChooser1.setDate(null);
+       
         JOptionPane.showMessageDialog(this, "Item added to cart");
         jPanel2.setVisible(true);
         
@@ -407,22 +379,22 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackbuttonActionPerformed
  
     public void setOrderListLegal(Customer cust) {
-         for(int i = 0; i <  legalOrderDirectory.getOrderList().size(); i ++) {
-               legal.getOrderList().add(legalOrderDirectory.getOrderList().get(i));
-               cust.getNGOorderList().add(legalOrderDirectory.getOrderList().get(i));
+         for(int i = 0; i <  ngoOrderDirectory.getOrderList().size(); i ++) {
+               ngo.getOrderList().add(ngoOrderDirectory.getOrderList().get(i));
+               cust.getNGOorderList().add(ngoOrderDirectory.getOrderList().get(i));
 
         }
-//        legal.getOrders().put(String.valueOf(legal.getOrders().size()), legalOrderDirectory.getOrderList());
-        cust.getNGOorderDirectoryList().add(legalOrderDirectory);
-        legal.getOrderDirectoryList().add(legalOrderDirectory);
+//        ngo.getOrders().put(String.valueOf(ngo.getOrders().size()), ngoOrderDirectory.getOrderList());
+        cust.getNGOorderDirectoryList().add(ngoOrderDirectory);
+        ngo.getOrderDirectoryList().add(ngoOrderDirectory);
     }
     private void BookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookAppointmentActionPerformed
          Customer cust = findCustomer();
         if("Credit".equals(cust.getCardType())){
             
          setOrderListLegal(cust);
-          for(int i = 0; i < legalOrderDirectory.getOrderList().size(); i ++) {
-            Total+= (Double.parseDouble(legalOrderDirectory.getOrderList().get(i).getPrice()));
+          for(int i = 0; i < ngoOrderDirectory.getOrderList().size(); i ++) {
+            Total+= (Double.parseDouble(ngoOrderDirectory.getOrderList().get(i).getPrice()));
         }
         CustomerPaymentPanels mm = new CustomerPaymentPanels(screen, cust, Total, "We have received your order. We will update as soon as your have appointment is scheduled.");
         screen.setRightComponent(mm);
@@ -438,8 +410,6 @@ public class CustomerSelectNGOPanel extends javax.swing.JPanel {
     private javax.swing.JTable LegalserviceTable;
     private javax.swing.JTable cartTable;
     private javax.swing.JTextField itemText;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
