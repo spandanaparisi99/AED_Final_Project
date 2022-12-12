@@ -31,7 +31,7 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     EcoSystem ecosystem;
     private UserAccount userAccount;
-    GovernmentOfficial hospitalManager;
+    GovernmentOfficial govOfficial;
     DefaultTableModel model;
     DefaultTableModel model1;
     private String selectedItem;
@@ -39,17 +39,17 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
     JSplitPane screen;
     Double Total = 0.0;
      
-    private GovPlansDirectory therapistOrderDirectory;
+    private GovPlansDirectory govPlansDirectory;
 
 
     /**
      * Creates new form CustomerSelectLegalPanel
      */
-    public CustomerSelectGovPlanPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, GovernmentOfficial hospitalManager, JSplitPane screen) {
+    public CustomerSelectGovPlanPanel(JPanel userProcessContainer, UserAccount account, EcoSystem system, GovernmentOfficial govOfficial, JSplitPane screen) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
-        this.hospitalManager = hospitalManager;
+        this.govOfficial = govOfficial;
         this.screen = screen;
         ecosystem = system;
         model = new DefaultTableModel();
@@ -58,18 +58,17 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
         cartTable.setModel(model1);
         
         
-        therapistOrderDirectory = new GovPlansDirectory();
+        govPlansDirectory = new GovPlansDirectory();
         
-        model.addColumn("Service Name");
-        model.addColumn("Price/hrs");
+        model.addColumn("Plan");
+        model.addColumn("Price");
         
-        model1.addColumn("Service Name");
-        model1.addColumn("Date");
+        model1.addColumn("Plan");
         model1.addColumn("Price");
-        model1.addColumn("Hrs");
+        model1.addColumn("Quantity");
         model1.addColumn("Total");
         
-        title.setText("Welcome to:"+ hospitalManager.getName() + " we offer best service");
+        title.setText("Welcome to:"+ govOfficial.getName());
         showMenuTable();
         
         jPanel2.setVisible(false);
@@ -78,7 +77,7 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
     }
     
     public void showMenuTable() {
-        HashMap<String, String> menu = hospitalManager.getMenu();
+        HashMap<String, String> menu = govOfficial.getMenu();
         if (menu.size() > 0) {
             for (Map.Entry<String, String> e : menu.entrySet()) {
                 model.addRow(new Object[]{
@@ -89,14 +88,14 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
         }
     }
         public void showCartTable() {
-        if (therapistOrderDirectory.getOrderList().size() > 0) {
-            for (int i = 0; i < therapistOrderDirectory.getOrderList().size(); i++) {
+        if (govPlansDirectory.getOrderList().size() > 0) {
+            for (int i = 0; i < govPlansDirectory.getOrderList().size(); i++) {
                 model1.addRow(new Object[]{
-                    therapistOrderDirectory.getOrderList().get(i).getItem(),
-                    therapistOrderDirectory.getOrderList().get(i).getDate(),
-                    therapistOrderDirectory.getOrderList().get(i).getPrice(),
-                    therapistOrderDirectory.getOrderList().get(i).getTime(),
-                    therapistOrderDirectory.getOrderList().get(i).getTotal()
+                    govPlansDirectory.getOrderList().get(i).getItem(),
+                    govPlansDirectory.getOrderList().get(i).getDate(),
+                    govPlansDirectory.getOrderList().get(i).getPrice(),
+                    govPlansDirectory.getOrderList().get(i).getTime(),
+                    govPlansDirectory.getOrderList().get(i).getTotal()
                 });
             }
         }
@@ -113,12 +112,12 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
     
         public int CheckTherpaistAvailibilty(String Date) {
             int a = 0;
-           System.out.println(hospitalManager.getOrderList().size());
-        if (hospitalManager.getOrderList().size() > 0) {
-            for (int i = 0; i < hospitalManager.getOrderList().size(); i++) {
+           System.out.println(govOfficial.getOrderList().size());
+        if (govOfficial.getOrderList().size() > 0) {
+            for (int i = 0; i < govOfficial.getOrderList().size(); i++) {
                  System.out.println(i);
-                 System.out.println(hospitalManager.getOrderList().get(i).getDate());
-                if(Date.equals(hospitalManager.getOrderList().get(i).getDate()))
+                 System.out.println(govOfficial.getOrderList().get(i).getDate());
+                if(Date.equals(govOfficial.getOrderList().get(i).getDate()))
                 {a = a + 1;}
                 
             }
@@ -140,8 +139,6 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
         itemText = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         itemText1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         AddButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -150,7 +147,7 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(0, 108, 103));
 
-        title.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        title.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         title.setForeground(new java.awt.Color(254, 254, 226));
         title.setText("Welcome");
 
@@ -199,21 +196,23 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(72, 72, 72));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel3.setText("Consultation Type");
+        jLabel3.setText("Program Name");
         jLabel3.setAutoscrolls(true);
 
         itemText.setForeground(new java.awt.Color(72, 72, 72));
+        itemText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemTextActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(72, 72, 72));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("Number of hours");
+        jLabel4.setText("Quantity");
         jLabel4.setAutoscrolls(true);
 
         itemText1.setForeground(new java.awt.Color(72, 72, 72));
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setText("Select Date");
 
         AddButton.setBackground(new java.awt.Color(127, 195, 126));
         AddButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -228,31 +227,23 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(itemText1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(itemText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(42, 42, 42))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(itemText1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(itemText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -271,16 +262,12 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(itemText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 226));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Your Quick Cart View");
@@ -294,7 +281,7 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
 
         BookAppointment.setBackground(new java.awt.Color(127, 195, 126));
         BookAppointment.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BookAppointment.setText("Book an Appointment");
+        BookAppointment.setText("Place Order");
         BookAppointment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BookAppointmentActionPerformed(evt);
@@ -306,22 +293,23 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel6)
-                .addContainerGap(19, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BookAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(BookAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(19, 19, 19))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(BookAppointment, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -331,43 +319,44 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(Backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125)
+                        .addGap(148, 148, 148)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(667, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(80, 80, 80)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(133, 133, 133)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(371, 371, 371)
+                        .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(578, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(33, 33, 33)
+                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(Backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                        .addComponent(Backbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(202, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(155, 155, 155))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -382,41 +371,22 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         // TODO add your handling code here:
          // TODO add your handling code here:
-        if(jDateChooser1.getDate() == null || itemText.getText().isEmpty() || itemText1.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "Kindly select service and select dates");
-            jDateChooser1.setDate(null);
-            return;
-        }else if(jDateChooser1.getDate().before(new Date()))
-                {JOptionPane.showMessageDialog(this, "Kindly select date after today's date");
-                jDateChooser1.setDate(null);
-                return;}
-         Date date = jDateChooser1.getDate();
-         SimpleDateFormat format1 = new SimpleDateFormat("MM-dd-yyyy");
+       
          String time = itemText1.getText();
          double total = Integer.parseInt(time) * Integer.parseInt(selectedPrice);
-         String date1 = format1.format(date);
-         System.out.println(date1);
          
-         int a = CheckTherpaistAvailibilty(date1);
+         String mes = "We are Sorry, " + govOfficial.getName() +" is not Available on this date!" ;
          
-         String mes = "We are Sorry, " + hospitalManager.getName() +" is not Available on this date!" ;
-         
-         if(a > 0){JOptionPane.showMessageDialog(this, mes);
-         itemText.setText("");
-        jDateChooser1.setDate(null);
-        itemText1.setText("");
-         return ;}
+   
         
-        therapistOrderDirectory.createOrder(selectedItem, selectedPrice, date1,String.valueOf(total), time, hospitalManager, userAccount);
+        govPlansDirectory.createOrder(selectedItem, selectedPrice,String.valueOf(total), time, govOfficial, userAccount);
         model1.addRow(new Object[]{
             selectedItem,
-            date1,
             selectedPrice,
             time,
             String.valueOf(total)
         });
         itemText.setText("");
-        jDateChooser1.setDate(null);
         itemText1.setText("");
         JOptionPane.showMessageDialog(this, "Item added to cart");
         jPanel2.setVisible(true);
@@ -433,14 +403,14 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackbuttonActionPerformed
  
     public void setOrderListLegal(Customer cust) {
-         for(int i = 0; i <  therapistOrderDirectory.getOrderList().size(); i ++) {
-               hospitalManager.getOrderList().add(therapistOrderDirectory.getOrderList().get(i));
-               cust.getgovOrderList().add(therapistOrderDirectory.getOrderList().get(i));
+         for(int i = 0; i <  govPlansDirectory.getOrderList().size(); i ++) {
+               govOfficial.getOrderList().add(govPlansDirectory.getOrderList().get(i));
+               cust.getgovOrderList().add(govPlansDirectory.getOrderList().get(i));
 
         }
 //        legal.getOrders().put(String.valueOf(legal.getOrders().size()), legalOrderDirectory.getOrderList());
-        cust.getGovorderDirectoryList().add(therapistOrderDirectory);
-        hospitalManager.getOrderDirectoryList().add(therapistOrderDirectory);
+        cust.getGovorderDirectoryList().add(govPlansDirectory);
+        govOfficial.getOrderDirectoryList().add(govPlansDirectory);
     }
     private void BookAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookAppointmentActionPerformed
         Customer cust = findCustomer();
@@ -450,8 +420,8 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
               if("Credit".equals(cust.getCardType())){
             
          setOrderListLegal(cust);
-         for(int i = 0; i < therapistOrderDirectory.getOrderList().size(); i ++) {
-            Total+= (Double.parseDouble(therapistOrderDirectory.getOrderList().get(i).getTotal()));
+         for(int i = 0; i < govPlansDirectory.getOrderList().size(); i ++) {
+            Total+= (Double.parseDouble(govPlansDirectory.getOrderList().get(i).getTotal()));
         }
         CustomerPaymentPanels mm = new CustomerPaymentPanels(screen, cust, Total, "We have received your order. We will update as soon as you have appointment is scheduled.");
         screen.setRightComponent(mm);
@@ -463,6 +433,10 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
           }
     }//GEN-LAST:event_BookAppointmentActionPerformed
 
+    private void itemTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemTextActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
@@ -472,8 +446,6 @@ public class CustomerSelectGovPlanPanel extends javax.swing.JPanel {
     private javax.swing.JTable cartTable;
     private javax.swing.JTextField itemText;
     private javax.swing.JTextField itemText1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
