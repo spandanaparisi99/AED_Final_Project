@@ -129,47 +129,59 @@ public class ManageNGO extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         selectManagerLabel3 = new javax.swing.JLabel();
         netwrokCombo = new javax.swing.JComboBox<>();
+        title = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 108, 103));
         setForeground(new java.awt.Color(254, 254, 226));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(254, 254, 226));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Add NGO Coordinator");
+        jLabel5.setText("Add NGO");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 215, -1));
 
         updateRestManagerLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         updateRestManagerLabel.setForeground(new java.awt.Color(254, 254, 226));
         updateRestManagerLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         updateRestManagerLabel.setText("Name");
+        add(updateRestManagerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 103, -1));
 
         restPwdLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         restPwdLabel1.setForeground(new java.awt.Color(254, 254, 226));
         restPwdLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         restPwdLabel1.setText("Username");
+        add(restPwdLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 103, 20));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(254, 254, 226));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("Password");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 103, 20));
 
         phoneLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         phoneLabel.setForeground(new java.awt.Color(254, 254, 226));
         phoneLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         phoneLabel.setText("Phone");
+        add(phoneLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 103, 20));
 
         addressLabel.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         addressLabel.setForeground(new java.awt.Color(254, 254, 226));
         addressLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         addressLabel.setText("Address");
+        add(addressLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 103, -1));
 
         AddressText.setForeground(new java.awt.Color(72, 72, 72));
+        add(AddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 145, -1));
 
         phoneText.setForeground(new java.awt.Color(72, 72, 72));
+        add(phoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 145, -1));
 
         restPwdText.setForeground(new java.awt.Color(72, 72, 72));
+        add(restPwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 145, -1));
 
         usernameText.setForeground(new java.awt.Color(72, 72, 72));
+        add(usernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 145, -1));
 
         nameText.setForeground(new java.awt.Color(72, 72, 72));
         nameText.addActionListener(new java.awt.event.ActionListener() {
@@ -177,11 +189,13 @@ public class ManageNGO extends javax.swing.JPanel {
                 nameTextActionPerformed(evt);
             }
         });
+        add(nameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 145, -1));
 
-        viewLabel.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        viewLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         viewLabel.setForeground(new java.awt.Color(254, 254, 226));
         viewLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        viewLabel.setText("View NGO Coordinator");
+        viewLabel.setText("View NGO");
+        add(viewLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 249, -1));
 
         customerListTable.setBackground(new java.awt.Color(254, 254, 226));
         customerListTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -210,6 +224,8 @@ public class ManageNGO extends javax.swing.JPanel {
         customerListTable.setToolTipText("");
         jScrollPane1.setViewportView(customerListTable);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 460, 696, 209));
+
         AddBtn.setBackground(new java.awt.Color(127, 195, 126));
         AddBtn.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         AddBtn.setForeground(new java.awt.Color(51, 51, 51));
@@ -219,16 +235,19 @@ public class ManageNGO extends javax.swing.JPanel {
                 AddBtnActionPerformed(evt);
             }
         });
+        add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 131, 44));
 
-        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(254, 254, 226));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Update / Delete NGO Coordinator");
+        jLabel8.setText("Update / Delete NGO");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 241, -1));
 
         selectManagerLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         selectManagerLabel1.setForeground(new java.awt.Color(254, 254, 226));
         selectManagerLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         selectManagerLabel1.setText("Select Coordinator");
+        add(selectManagerLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, 119, -1));
 
         customerListCombo.setForeground(new java.awt.Color(72, 72, 72));
         customerListCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
@@ -237,6 +256,7 @@ public class ManageNGO extends javax.swing.JPanel {
                 customerListComboActionPerformed(evt);
             }
         });
+        add(customerListCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 145, -1));
 
         updateNameText.setForeground(new java.awt.Color(72, 72, 72));
         updateNameText.addActionListener(new java.awt.event.ActionListener() {
@@ -244,6 +264,7 @@ public class ManageNGO extends javax.swing.JPanel {
                 updateNameTextActionPerformed(evt);
             }
         });
+        add(updateNameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 145, -1));
 
         updateUsernameText.setForeground(new java.awt.Color(72, 72, 72));
         updateUsernameText.addActionListener(new java.awt.event.ActionListener() {
@@ -251,16 +272,19 @@ public class ManageNGO extends javax.swing.JPanel {
                 updateUsernameTextActionPerformed(evt);
             }
         });
+        add(updateUsernameText, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 220, 145, -1));
 
         restPwdLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         restPwdLabel2.setForeground(new java.awt.Color(254, 254, 226));
         restPwdLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         restPwdLabel2.setText("Username");
+        add(restPwdLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 83, -1));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(254, 254, 226));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel7.setText("Password");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 250, 70, -1));
 
         updatePwdText.setForeground(new java.awt.Color(72, 72, 72));
         updatePwdText.addActionListener(new java.awt.event.ActionListener() {
@@ -268,20 +292,25 @@ public class ManageNGO extends javax.swing.JPanel {
                 updatePwdTextActionPerformed(evt);
             }
         });
+        add(updatePwdText, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 145, -1));
 
         updatePhoneText.setForeground(new java.awt.Color(72, 72, 72));
+        add(updatePhoneText, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, 145, -1));
 
         phoneLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         phoneLabel1.setForeground(new java.awt.Color(254, 254, 226));
         phoneLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         phoneLabel1.setText("Phone");
+        add(phoneLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 68, 20));
 
         addressLabel1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         addressLabel1.setForeground(new java.awt.Color(254, 254, 226));
         addressLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         addressLabel1.setText("Address");
+        add(addressLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 50, 20));
 
         updateAddressText.setForeground(new java.awt.Color(72, 72, 72));
+        add(updateAddressText, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 145, -1));
 
         deleteButton.setBackground(new java.awt.Color(127, 195, 126));
         deleteButton.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -292,6 +321,7 @@ public class ManageNGO extends javax.swing.JPanel {
                 deleteButtonActionPerformed(evt);
             }
         });
+        add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 170, 131, 44));
 
         updateButton.setBackground(new java.awt.Color(127, 195, 126));
         updateButton.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -302,6 +332,7 @@ public class ManageNGO extends javax.swing.JPanel {
                 updateButtonActionPerformed(evt);
             }
         });
+        add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 250, 131, 41));
 
         btnBack.setBackground(new java.awt.Color(127, 195, 126));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
@@ -312,32 +343,40 @@ public class ManageNGO extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 131, -1));
 
         selectManagerLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         selectManagerLabel2.setForeground(new java.awt.Color(254, 254, 226));
         selectManagerLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         selectManagerLabel2.setText("Name");
+        add(selectManagerLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 69, -1));
 
         Email.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         Email.setForeground(new java.awt.Color(254, 254, 226));
         Email.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         Email.setText("Email");
+        add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 103, -1));
 
         EmailTxt.setForeground(new java.awt.Color(72, 72, 72));
+        add(EmailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 145, -1));
 
         addressLabel2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         addressLabel2.setForeground(new java.awt.Color(254, 254, 226));
         addressLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         addressLabel2.setText("Email");
+        add(addressLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 370, 53, 20));
 
         updateEmailTxt.setForeground(new java.awt.Color(72, 72, 72));
+        add(updateEmailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 370, 145, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/legal_court_justice_lawyer_18x12.png.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ngo_1.gif"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 30, 470, 400));
 
         selectManagerLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         selectManagerLabel3.setForeground(new java.awt.Color(254, 254, 226));
         selectManagerLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         selectManagerLabel3.setText("Select Network");
+        add(selectManagerLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, 20));
 
         netwrokCombo.setForeground(new java.awt.Color(72, 72, 72));
         netwrokCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "None" }));
@@ -346,179 +385,14 @@ public class ManageNGO extends javax.swing.JPanel {
                 netwrokComboActionPerformed(evt);
             }
         });
+        add(netwrokCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 145, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(selectManagerLabel3)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(netwrokCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(updateRestManagerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(restPwdLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(Email, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGap(18, 18, 18)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(usernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(restPwdText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(AddressText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addComponent(EmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                        .addGap(26, 26, 26))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(79, 79, 79)
-                                        .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(viewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(selectManagerLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(restPwdLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(addressLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(addressLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(phoneLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addComponent(selectManagerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(customerListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(updateNameText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(updateUsernameText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(updatePwdText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(updatePhoneText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(updateAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(updateEmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(18, 18, 18)))
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {AddBtn, btnBack, deleteButton, updateButton});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(viewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnBack)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel5))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateRestManagerLabel)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(nameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(selectManagerLabel1)
-                                .addComponent(customerListCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(selectManagerLabel2)
-                                    .addComponent(updateNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(restPwdLabel2)
-                                    .addComponent(updateUsernameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(updatePwdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(usernameText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(restPwdLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(restPwdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(phoneText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(phoneLabel))
-                                .addGap(3, 3, 3)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(AddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addressLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(EmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Email)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(updatePhoneText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(phoneLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(addressLabel1)
-                                    .addComponent(updateAddressText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(updateEmailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addressLabel2))
-                                .addGap(3, 3, 3))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(netwrokCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(selectManagerLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
-        );
+        title.setBackground(new java.awt.Color(255, 51, 0));
+        title.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        title.setForeground(new java.awt.Color(254, 254, 226));
+        title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        title.setText("Manage NGO");
+        add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 500, 58));
     }// </editor-fold>//GEN-END:initComponents
 
     private void nameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextActionPerformed
@@ -750,6 +624,7 @@ public class ManageNGO extends javax.swing.JPanel {
     private javax.swing.JLabel selectManagerLabel1;
     private javax.swing.JLabel selectManagerLabel2;
     private javax.swing.JLabel selectManagerLabel3;
+    private javax.swing.JLabel title;
     private javax.swing.JTextField updateAddressText;
     private javax.swing.JButton updateButton;
     private javax.swing.JTextField updateEmailTxt;
